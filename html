@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Água Consciente — Cada gota importa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --azul-prof: #071e35;
+      --azul-meio: #0f3a63;
+      --azul-claro: #1e6fa8;
+      --agua: #4db8e8;
+      --turquesa: #00c9b1;
+      --verde-agua: #00e6cc;
+      --areia: #f0ede6;
+      --branco: #ffffff;
+      --cinza: #f4f7fb;
+      --texto: #1a2e3d;
+      --texto-leve: #5a7385;
+      --alerta: #e07b39;
+      --radius: 14px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;color:var(--texto);background:var(--branco);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;background:rgba(7,30,53,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(77,184,232,0.1)}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--agua);text-decoration:none}
+    .nav-logo span{color:var(--turquesa)}
+    nav ul{list-style:none;display:flex;gap:2rem}
+    nav ul a{text-decoration:none;color:rgba(255,255,255,0.65);font-size:0.83rem;font-weight:500;letter-spacing:0.04em;transition:color .2s}
+    nav ul a:hover{color:var(--agua)}
+
+    /* HERO */
+    #hero{min-height:100vh;background:var(--azul-prof);position:relative;overflow:hidden;display:flex;align-items:center;padding:8rem 4rem 6rem}
+    .hero-orb{position:absolute;border-radius:50%;filter:blur(80px)}
+    .orb1{width:700px;height:700px;background:radial-gradient(circle,rgba(30,111,168,0.25),transparent 70%);top:-200px;right:-100px}
+    .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(0,201,177,0.15),transparent 70%);bottom:-100px;left:10%}
+    .hero-wrap{max-width:1100px;width:100%;margin:0 auto;position:relative;z-index:2}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,201,177,0.12);border:1px solid rgba(0,201,177,0.35);color:var(--turquesa);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;margin-bottom:1.5rem}
+    .hero-eyebrow{font-size:.85rem;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem}
+    h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,6.5vw,6rem);font-weight:900;line-height:1.0;color:var(--branco);margin-bottom:1.5rem}
+    h1.hero-title .accent{color:var(--agua);font-style:italic}
+    .hero-desc{font-size:1.1rem;line-height:1.8;color:rgba(255,255,255,.65);max-width:560px;margin-bottom:2.5rem}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-p{padding:.85rem 2rem;border-radius:8px;background:var(--turquesa);color:var(--azul-prof);font-weight:700;font-size:.95rem;text-decoration:none;transition:all .2s;display:inline-block}
+    .btn-p:hover{background:var(--verde-agua);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,201,177,.35)}
+    .btn-o{padding:.85rem 2rem;border-radius:8px;border:1.5px solid rgba(77,184,232,.4);color:var(--agua);font-weight:600;font-size:.95rem;text-decoration:none;transition:all .2s;display:inline-block}
+    .btn-o:hover{border-color:var(--agua);background:rgba(77,184,232,.08)}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:5rem}
+    .stat{background:rgba(255,255,255,.05);border:1px solid rgba(77,184,232,.12);border-radius:12px;padding:1.25rem 1.5rem;transition:border-color .25s}
+    .stat:hover{border-color:rgba(77,184,232,.35)}
+    .stat-n{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--agua)}
+    .stat-l{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.3rem;line-height:1.5}
+    .wave{position:absolute;bottom:-2px;left:0;width:100%}
+
+    /* SECTION COMMONS */
+    .s-tag{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--azul-claro);margin-bottom:.75rem}
+    .s-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:800;line-height:1.15;color:var(--azul-prof);margin-bottom:1rem}
+    .s-desc{font-size:1rem;line-height:1.8;color:var(--texto-leve);max-width:580px}
+    section{padding:6rem 4rem}
+    .inner{max-width:1100px;margin:0 auto}
+
+    /* SOBRE */
+    #sobre{background:var(--areia)}
+    .sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+    .sobre-text p{font-size:1rem;line-height:1.9;color:var(--texto-leve);margin-bottom:1rem}
+    .sobre-text strong{color:var(--azul-prof)}
+    .ods-pill{display:inline-flex;align-items:center;gap:.75rem;background:var(--azul-prof);border-radius:10px;padding:.85rem 1.25rem;margin-top:1rem}
+    .ods-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--turquesa)}
+    .ods-text{font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.4}
+    .pilares{display:flex;flex-direction:column;gap:1rem}
+    .pilar{background:var(--branco);border-left:4px solid var(--turquesa);border-radius:0 10px 10px 0;padding:1.1rem 1.5rem;box-shadow:0 2px 14px rgba(10,37,64,.07);transition:transform .2s}
+    .pilar:hover{transform:translateX(4px)}
+    .pilar-t{font-weight:700;color:var(--azul-prof);font-size:.92rem;margin-bottom:.2rem}
+    .pilar-d{font-size:.85rem;color:var(--texto-leve);line-height:1.6}
+
+    /* DIAGNÓSTICO */
+    #diagnostico{background:var(--azul-prof);position:relative;overflow:hidden}
+    #diagnostico::before{content:'';position:absolute;top:-300px;right:-200px;width:800px;height:800px;background:radial-gradient(circle,rgba(0,201,177,.06),transparent 70%);border-radius:50%}
+    .diag-head{text-align:center;margin-bottom:3.5rem}
+    .diag-head .s-tag{color:var(--turquesa)}
+    .diag-head .s-title{color:var(--branco)}
+    .diag-head p{color:rgba(255,255,255,.6);max-width:580px;margin:0 auto;line-height:1.7}
+    .diag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;position:relative;z-index:2}
+    .d-card{background:rgba(255,255,255,.04);border:1px solid rgba(77,184,232,.15);border-radius:16px;padding:1.75rem;transition:all .3s}
+    .d-card:hover{border-color:var(--turquesa);background:rgba(0,201,177,.05);transform:translateY(-5px)}
+    .d-card .ico{font-size:2rem;margin-bottom:1rem}
+    .d-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--agua);margin-bottom:.6rem}
+    .d-card p{font-size:.875rem;color:rgba(255,255,255,.6);line-height:1.7}
+    .d-stat{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(77,184,232,.12);font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--turquesa)}
+    .d-stat small{display:block;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:400;color:rgba(255,255,255,.45);margin-top:.2rem}
+
+    /* DADOS NACIONAIS */
+    #dados{background:var(--cinza)}
+    .dados-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+    .dados-visual{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .dado-box{background:var(--branco);border-radius:14px;padding:1.5rem;box-shadow:0 2px 16px rgba(10,37,64,.07);text-align:center}
+    .dado-box .num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--azul-claro)}
+    .dado-box .lab{font-size:.8rem;color:var(--texto-leve);line-height:1.5;margin-top:.4rem}
+    .dado-box.destaque{background:var(--azul-prof);grid-column:span 2}
+    .dado-box.destaque .num{color:var(--turquesa);font-size:3.2rem}
+    .dado-box.destaque .lab{color:rgba(255,255,255,.65)}
+    .dados-text p{font-size:1rem;line-height:1.8;color:var(--texto-leve);margin-bottom:1rem}
+    .fonte{font-size:.75rem;color:var(--texto-leve);margin-top:1.5rem;padding-top:1rem;border-top:1px solid #e0e8f0}
+
+    /* REUSO */
+    #reuso{background:var(--branco)}
+    .reuso-header{text-align:center;margin-bottom:3.5rem}
+    .reuso-header .s-desc{margin:0 auto;text-align:center}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;position:relative}
+    .steps::before{content:'';position:absolute;top:2.5rem;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--azul-claro),var(--turquesa));z-index:0}
+    .step-card{background:var(--cinza);border-radius:14px;padding:1.5rem 1.25rem;text-align:center;position:relative;z-index:1;border:2px solid transparent;transition:all .25s}
+    .step-card:hover{border-color:var(--turquesa);background:var(--branco);box-shadow:0 6px 24px rgba(0,201,177,.12)}
+    .step-num{width:48px;height:48px;background:var(--azul-prof);color:var(--turquesa);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;margin:0 auto 1rem}
+    .step-card h3{font-weight:700;font-size:.95rem;color:var(--azul-prof);margin-bottom:.5rem}
+    .step-card p{font-size:.82rem;color:var(--texto-leve);line-height:1.6}
+    .reuso-bottom{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .reuso-usos{background:var(--azul-prof);border-radius:16px;padding:2rem}
+    .reuso-usos h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--agua);margin-bottom:1.25rem}
+    .uso-item{display:flex;align-items:flex-start;gap:.75rem;padding:.6rem 0;border-bottom:1px solid rgba(77,184,232,.1);font-size:.875rem;color:rgba(255,255,255,.7)}
+    .uso-item:last-child{border-bottom:none}
+    .uso-pct{margin-left:auto;font-weight:700;color:var(--turquesa);flex-shrink:0;font-size:.85rem}
+    .reuso-alert{background:linear-gradient(135deg,#fff9f5,#fff4eb);border:2px solid var(--alerta);border-radius:16px;padding:2rem}
+    .reuso-alert h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--alerta);margin-bottom:1rem}
+    .reuso-alert p{font-size:.875rem;color:var(--texto);line-height:1.7;margin-bottom:.75rem}
+    .alert-big{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--alerta);display:block;margin-top:.75rem}
+    .alert-big small{font-size:.8rem;font-weight:400;color:var(--texto-leve);font-family:'DM Sans',sans-serif;display:block}
+
+    /* REDES SOCIAIS */
+    #redes{background:var(--azul-prof);position:relative;overflow:hidden}
+    .redes-head{text-align:center;margin-bottom:3.5rem}
+    .redes-head .s-tag{color:var(--turquesa)}
+    .redes-head .s-title{color:var(--branco)}
+    .redes-head p{color:rgba(255,255,255,.6);max-width:520px;margin:0 auto}
+    .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .post-card{border-radius:16px;overflow:hidden;position:relative;cursor:pointer;transition:transform .3s}
+    .post-card:hover{transform:scale(1.02)}
+    .post-visual{height:200px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;overflow:hidden}
+    .post-v1{background:linear-gradient(135deg,#0f3a63,#1e6fa8)}
+    .post-v2{background:linear-gradient(135deg,#071e35,#00524a)}
+    .post-v3{background:linear-gradient(135deg,#3a1a00,#c45a00)}
+    .post-v4{background:linear-gradient(135deg,#0a2540,#1a4a7a)}
+    .post-v5{background:linear-gradient(135deg,#002a26,#00c9b1 120%)}
+    .post-v6{background:linear-gradient(135deg,#1a1a3a,#4a0080)}
+    .post-stat{position:absolute;bottom:1rem;right:1rem;font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:rgba(255,255,255,.9)}
+    .post-body{background:rgba(255,255,255,.06);border:1px solid rgba(77,184,232,.15);border-top:none;padding:1.25rem}
+    .post-plat{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--turquesa);margin-bottom:.4rem}
+    .post-body h4{font-weight:700;font-size:.92rem;color:var(--branco);margin-bottom:.4rem}
+    .post-legenda{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:.75rem}
+    .post-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+    .tag{font-size:.7rem;background:rgba(77,184,232,.12);color:var(--agua);padding:.2rem .6rem;border-radius:100px}
+    .copy-btn{width:100%;margin-top:.75rem;padding:.6rem;background:rgba(0,201,177,.15);border:1px solid rgba(0,201,177,.3);color:var(--turquesa);border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+    .copy-btn:hover{background:rgba(0,201,177,.25)}
+    .copy-btn.copied{background:rgba(0,201,177,.3);color:var(--verde-agua)}
+
+    /* DICAS */
+    #dicas{background:var(--cinza)}
+    .dicas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+    .dica{border:1.5px solid #dce8f2;border-radius:14px;padding:1.6rem;background:var(--branco);transition:all .25s}
+    .dica:hover{border-color:var(--agua);box-shadow:0 6px 24px rgba(30,111,168,.1);transform:translateY(-3px)}
+    .dica .ico{font-size:2rem;margin-bottom:.85rem}
+    .dica h3{font-weight:700;font-size:.97rem;color:var(--azul-prof);margin-bottom:.5rem}
+    .dica p{font-size:.85rem;color:var(--texto-leve);line-height:1.7}
+
+    /* CALCULADORA */
+    #calculadora{background:var(--azul-prof)}
+    .calc-wrap{max-width:860px;margin:0 auto}
+    .calc-head{text-align:center;margin-bottom:2.5rem}
+    .calc-head .s-tag{color:var(--turquesa)}
+    .calc-head .s-title{color:var(--branco)}
+    .calc-head p{color:rgba(255,255,255,.6)}
+    .calc-box{background:rgba(255,255,255,.05);border:1px solid rgba(77,184,232,.18);border-radius:20px;padding:2.5rem}
+    .calc-g{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+    .f label{display:block;font-size:.83rem;color:rgba(255,255,255,.65);margin-bottom:.45rem;font-weight:500}
+    .f input,.f select{width:100%;padding:.8rem 1rem;border-radius:8px;border:1.5px solid rgba(77,184,232,.2);background:rgba(255,255,255,.07);color:var(--branco);font-size:.95rem;font-family:'DM Sans',sans-serif;transition:border-color .2s}
+    .f input:focus,.f select:focus{outline:none;border-color:var(--turquesa)}
+    .f select option{background:var(--azul-prof)}
+    .calc-btn{width:100%;padding:.95rem;border-radius:10px;background:var(--turquesa);border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;color:var(--azul-prof);transition:all .2s;margin-bottom:1.5rem}
+    .calc-btn:hover{background:var(--verde-agua)}
+    #resultado{display:none;text-align:center;padding:2rem;background:rgba(0,201,177,.08);border-radius:12px;border:1px solid rgba(0,201,177,.25)}
+    #res-n{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--turquesa)}
+    #res-l{color:rgba(255,255,255,.6);margin-top:.4rem;font-size:.9rem}
+    #res-s{margin-top:.75rem;font-weight:600;font-size:.95rem;color:var(--branco)}
+
+    /* AVISOS */
+    #avisos{background:var(--branco)}
+    .avisos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+    .av{background:var(--cinza);border-radius:14px;padding:1.6rem;border-left:4px solid var(--azul-claro);transition:transform .2s}
+    .av:hover{transform:translateX(4px)}
+    .av.urg{border-left-color:var(--alerta)}
+    .av.dest{border-left-color:var(--turquesa)}
+    .av-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.6rem}
+    .av-ico{font-size:1.5rem}
+    .av-dt{font-size:.72rem;font-weight:600;color:var(--texto-leve)}
+    .av h4{font-weight:700;font-size:.95rem;color:var(--azul-prof);margin-bottom:.4rem}
+    .av p{font-size:.85rem;color:var(--texto-leve);line-height:1.65}
+    .av-badge{display:inline-block;margin-top:.7rem;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px;background:rgba(30,111,168,.1);color:var(--azul-claro)}
+    .av-badge.u{background:rgba(224,123,57,.1);color:var(--alerta)}
+    .av-badge.n{background:rgba(0,201,177,.1);color:var(--turquesa)}
+
+    /* PARTICIPAÇÃO */
+    #participacao{background:var(--cinza)}
+    .part-wrap{max-width:860px;margin:0 auto}
+    .part-head{text-align:center;margin-bottom:2.5rem}
+    .form-box{background:var(--branco);border-radius:20px;padding:3rem;border:1.5px solid #dce8f2}
+    .form-g{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
+    .ff label{display:block;font-size:.83rem;font-weight:600;color:var(--azul-prof);margin-bottom:.4rem}
+    .ff input,.ff textarea,.ff select{width:100%;padding:.8rem 1rem;border-radius:8px;border:1.5px solid #dce6ef;background:var(--branco);font-size:.92rem;font-family:'DM Sans',sans-serif;color:var(--texto);transition:border-color .2s}
+    .ff input:focus,.ff textarea:focus,.ff select:focus{outline:none;border-color:var(--azul-claro)}
+    .ff textarea{resize:vertical;min-height:110px}
+    .form-submit{text-align:center;margin-top:2rem}
+    #success-msg{display:none;text-align:center;padding:1.25rem;background:rgba(0,201,177,.1);border-radius:10px;color:var(--turquesa);font-weight:600;margin-top:1rem}
+
+    /* FOOTER */
+    footer{background:var(--azul-prof);padding:3rem 4rem;border-top:1px solid rgba(77,184,232,.08)}
+    .foot{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+    .foot-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--agua);font-weight:700}
+    .foot-txt{font-size:.8rem;color:rgba(255,255,255,.4);text-align:center;line-height:1.7}
+    .foot-links{display:flex;gap:1.75rem}
+    .foot-links a{font-size:.82rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+    .foot-links a:hover{color:var(--agua)}
+
+    /* CONSCIENTIZAÇÃO TABS */
+    .cons-tabs{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem}
+    .cons-tab{padding:.65rem 1.4rem;border-radius:100px;border:1.5px solid rgba(77,184,232,.25);background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+    .cons-tab:hover{border-color:var(--turquesa);color:var(--turquesa)}
+    .cons-tab.active{background:var(--turquesa);border-color:var(--turquesa);color:var(--azul-prof)}
+    .cons-panel{animation:fadeIn .3s ease}
+    .cons-panel.hidden{display:none}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .cons-intro{display:flex;gap:1.5rem;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(77,184,232,.15);border-radius:16px;padding:1.75rem;margin-bottom:2rem}
+    .cons-ico{font-size:3rem;flex-shrink:0}
+    .cons-intro h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--agua);margin-bottom:.5rem}
+    .cons-intro p{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.7}
+    .cons-intro strong{color:var(--turquesa)}
+    .cons-steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+    .cons-step{display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(77,184,232,.1);border-radius:12px;padding:1.25rem;transition:border-color .2s}
+    .cons-step:hover{border-color:rgba(0,201,177,.35)}
+    .cs-num{min-width:32px;height:32px;border-radius:50%;background:var(--turquesa);color:var(--azul-prof);font-weight:900;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Playfair Display',serif}
+    .cs-body strong{display:block;font-size:.9rem;color:var(--agua);margin-bottom:.35rem}
+    .cs-body p{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.65;margin:0}
+    .cons-destaque{background:rgba(0,201,177,.1);border:1px solid rgba(0,201,177,.3);border-radius:12px;padding:1.25rem 1.5rem;font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.6}
+    .cons-destaque strong{color:var(--turquesa)}
+    .cons-alert{background:rgba(224,123,57,.1);border:1px solid rgba(224,123,57,.3);border-radius:12px;padding:1.25rem 1.5rem;font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.6}
+    .cons-alert strong{color:var(--alerta)}
+
+    /* ODS 6 BANNER */
+    .ods6-banner{display:grid;grid-template-columns:1fr 1fr;gap:2rem;background:linear-gradient(135deg,#0a4a7a,#006b5e);border-radius:20px;padding:2.5rem;margin-bottom:2.5rem;border:1px solid rgba(0,201,177,.25);position:relative;overflow:hidden}
+    .ods6-banner::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(0,201,177,.12),transparent 70%);border-radius:50%;pointer-events:none}
+    .ods6-left{display:flex;gap:1.5rem;align-items:flex-start}
+    .ods6-icon{background:rgba(0,201,177,.18);border:2px solid rgba(0,201,177,.5);border-radius:14px;min-width:70px;height:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+    .ods6-num-big{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--turquesa);line-height:1}
+    .ods6-sub{font-size:.6rem;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.55);text-transform:uppercase}
+    .ods6-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--turquesa);margin-bottom:.4rem}
+    .ods6-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--branco);font-weight:800;margin-bottom:.65rem;line-height:1.25}
+    .ods6-desc{font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.7}
+    .ods6-desc strong{color:var(--turquesa)}
+    .ods6-metas{display:flex;flex-direction:column;gap:.7rem;justify-content:center}
+    .ods6-meta{display:flex;align-items:flex-start;gap:.6rem;font-size:.85rem;color:rgba(255,255,255,.75);line-height:1.5}
+    .ods6-dot{width:8px;height:8px;border-radius:50%;background:var(--turquesa);flex-shrink:0;margin-top:.4rem}
+    .ods6-fonte{margin-top:1rem;padding-top:.85rem;border-top:1px solid rgba(77,184,232,.15);font-size:.72rem;color:rgba(255,255,255,.4)}
+    .ods6-fonte a{color:rgba(77,184,232,.7);text-decoration:none;transition:color .2s}
+    .ods6-fonte a:hover{color:var(--agua)}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem}
+      nav ul{gap:1rem}
+      section{padding:4rem 1.5rem}
+      .hero-stats,.sobre-grid,.diag-grid,.dados-grid,.dados-visual,.steps,.reuso-bottom,.posts-grid,.dicas-grid,.avisos-grid,.form-g,.calc-g,.ods6-banner,.ods6-left,.cons-steps-grid{grid-template-columns:1fr}
+      .ods6-banner{display:flex;flex-direction:column}
+      .dado-box.destaque{grid-column:span 1}
+      .steps::before{display:none}
+      .foot{flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Água<span>Consciente</span></a>
+  <ul>
+    <li><a href="#sobre">Projeto</a></li>
+    <li><a href="#diagnostico">Diagnóstico</a></li>
+    <li><a href="#reuso">Reuso</a></li>
+    <li><a href="#redes">Comunicação</a></li>
+    <li><a href="#avisos">Avisos</a></li>
+    <li><a href="#participacao">Participe</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-wrap">
+    <div class="badge">💧 Projeto de Extensão Universitária</div>
+    <div class="hero-eyebrow">Água Potável e Saneamento</div>
+    <h1 class="hero-title">Cada gota<br><span class="accent">importa.</span></h1>
+    <p class="hero-desc">Diagnóstico do desperdício de água em áreas urbanas, conscientização da população e divulgação de técnicas para reuso de águas pluviais — porque preservar é um ato coletivo.</p>
+    <div class="hero-btns">
+      <a href="#diagnostico" class="btn-p">Ver o diagnóstico</a>
+      <a href="#participacao" class="btn-o">Participe do projeto</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">190L</div><div class="stat-l">consumo médio diário por pessoa no Brasil</div></div>
+      <div class="stat"><div class="stat-n">38%</div><div class="stat-l">da água tratada é perdida por vazamentos nas redes</div></div>
+      <div class="stat"><div class="stat-n">30%</div><div class="stat-l">pode ser economizado com mudança de hábitos</div></div>
+      <div class="stat"><div class="stat-n">2bi</div><div class="stat-l">de pessoas sem acesso a água potável segura no mundo</div></div>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,45 C400,90 1040,0 1440,45 L1440,90 L0,90 Z" fill="#f0ede6"/>
+  </svg>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" style="background:var(--areia)">
+  <div class="inner">
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <div class="s-tag">Sobre o projeto</div>
+        <h2 class="s-title">Diagnóstico do Desperdício em Regiões Urbanas</h2>
+        <p>Este projeto de extensão universitária atua no combate ao desperdício de água nas cidades. Nossa missão é <strong>alertar sobre os principais focos de desperdício urbano</strong> e conscientizar a população sobre soluções acessíveis para o reuso hídrico.</p>
+        <p>Atuamos por meio de <strong>redes sociais, materiais educativos, eventos comunitários e este canal digital</strong>, levando informação de qualidade para cada bairro e cada família.</p>
+        <p>O projeto se alinha diretamente ao <strong>Objetivo de Desenvolvimento Sustentável nº 6</strong> da ONU: garantir água potável e saneamento para todos.</p>
+        <div class="ods-pill">
+          <div class="ods-num">ODS 6</div>
+          <div class="ods-text">Água Potável<br>e Saneamento</div>
+        </div>
+      </div>
+      <div class="pilares">
+        <div class="pilar"><div class="pilar-t">🔍 Diagnóstico</div><div class="pilar-d">Mapeamento do consumo e desperdício de água em áreas urbanas, com dados reais e indicadores baseados em fontes nacionais (SNIS, ANA, IBGE).</div></div>
+        <div class="pilar"><div class="pilar-t">📣 Conscientização</div><div class="pilar-d">Campanhas em redes sociais, distribuição de material educativo e ações presenciais nas escolas, feiras livres e centros comunitários.</div></div>
+        <div class="pilar"><div class="pilar-t">🌧️ Reuso Pluvial</div><div class="pilar-d">Divulgação de técnicas acessíveis para captação e reuso de águas da chuva em residências e espaços públicos urbanos.</div></div>
+        <div class="pilar"><div class="pilar-t">📱 Comunicação Digital</div><div class="pilar-d">Produção de conteúdo para redes sociais e canais digitais, ampliando o alcance do projeto e engajando a comunidade.</div></div>
+        <div class="pilar"><div class="pilar-t">🤝 Participação Comunitária</div><div class="pilar-d">A comunidade é protagonista — suas ideias, relatos e sugestões guiam nossas ações e prioridades no território.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section id="diagnostico">
+  <div class="inner">
+    <div class="diag-head">
+      <div class="s-tag">Dados & Diagnóstico</div>
+      <h2 class="s-title" style="color:var(--branco)">O que os números revelam</h2>
+      <p>O desperdício urbano de água é um problema real, mensurável e reversível. Conheça os principais fatores identificados em nosso diagnóstico, com base em dados nacionais do SNIS e da ANA.</p>
+    </div>
+    <div class="diag-grid">
+      <div class="d-card"><div class="ico">🏙️</div><h3>Perdas na Rede de Distribuição</h3><p>Tubulações antigas, conexões irregulares e falta de manutenção fazem com que boa parte da água tratada nunca chegue ao consumidor final.</p><div class="d-stat">38–45%<small>da água pode ser perdida antes de chegar às torneiras</small></div></div>
+      <div class="d-card"><div class="ico">🚰</div><h3>Desperdício Doméstico</h3><p>Banhos longos, torneiras abertas, descargas desnecessárias e vazamentos ignorados somam volumes expressivos no consumo diário das famílias.</p><div class="d-stat">46L<small>desperdiçados por dia em uma simples torneira com vazamento</small></div></div>
+      <div class="d-card"><div class="ico">🌧️</div><h3>Água da Chuva não Aproveitada</h3><p>Grande parte da água de chuva escoa para o esgoto sem nenhum aproveitamento, representando um potencial enorme desperdiçado em áreas urbanas.</p><div class="d-stat">60%<small>poderia ser aproveitado em usos não potáveis nas residências</small></div></div>
+      <div class="d-card"><div class="ico">🏭</div><h3>Comércio e Indústria</h3><p>Estabelecimentos comerciais e pequenas indústrias frequentemente operam sem medidas básicas de eficiência hídrica, multiplicando o impacto do desperdício.</p><div class="d-stat">3×<small>maior consumo médio por m² em áreas comerciais vs. residencial</small></div></div>
+      <div class="d-card"><div class="ico">🌿</div><h3>Irrigação Urbana Ineficiente</h3><p>Parques e jardins públicos muitas vezes utilizam água tratada para irrigação em horários inadequados, quando alternativas de reuso seriam mais eficientes.</p><div class="d-stat">40%<small>de economia possível com irrigação inteligente e horários corretos</small></div></div>
+      <div class="d-card"><div class="ico">📊</div><h3>Medição e Controle</h3><p>Sem hidrômetros individualizados e monitoramento eficiente, fica difícil identificar e corrigir os focos de desperdício em tempo hábil.</p><div class="d-stat">1 em 4<small>domicílios brasileiros não tem medição precisa do consumo hídrico</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DADOS NACIONAIS -->
+<section id="dados">
+  <div class="inner">
+    <div class="dados-grid">
+      <div>
+        <div class="s-tag">Panorama Nacional</div>
+        <h2 class="s-title">Brasil: o paradoxo hídrico</h2>
+        <div class="dados-text">
+          <p>O Brasil possui <strong>12% da água doce superficial do mundo</strong>, mas enfrenta graves problemas de distribuição, saneamento e desperdício. Regiões metropolitanas perdem bilhões de litros por ano em falhas de infraestrutura.</p>
+          <p>Segundo o Sistema Nacional de Informações sobre Saneamento (SNIS), o índice médio de perdas nas redes de distribuição supera 38% — um dos mais altos da América Latina.</p>
+          <p>Ao mesmo tempo, mais de 33 milhões de brasileiros ainda não têm acesso a água tratada, evidenciando que o problema não é de escassez, mas de gestão e justiça hídrica.</p>
+          <div class="fonte">Fontes: SNIS 2022, ANA — Agência Nacional de Águas, IBGE, ONU-Água</div>
+        </div>
+      </div>
+      <div class="dados-visual">
+        <div class="dado-box destaque"><div class="num">33M</div><div class="lab">brasileiros sem acesso a água potável tratada</div></div>
+        <div class="dado-box"><div class="num">100M</div><div class="lab">sem esgotamento sanitário adequado</div></div>
+        <div class="dado-box"><div class="num">12%</div><div class="lab">da água doce superficial mundial está no Brasil</div></div>
+        <div class="dado-box"><div class="num">#3</div><div class="lab">em perdas de água na distribuição urbana na América Latina</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REUSO -->
+<section id="reuso">
+  <div class="inner">
+    <div class="reuso-header">
+      <div class="s-tag" style="text-align:center">Técnicas sustentáveis</div>
+      <h2 class="s-title" style="text-align:center;margin-bottom:.75rem">Como reusar a água da chuva</h2>
+      <p class="s-desc">Captar e reaproveitar a água da chuva é uma das soluções mais acessíveis e eficazes para reduzir o consumo de água tratada nas residências urbanas.</p>
+    </div>
+    <div class="steps">
+      <div class="step-card"><div class="step-num">1</div><h3>Captação</h3><p>Calhas e conduítes direcionam a água do telhado para um reservatório. Baldes, tonéis ou cisternas funcionam conforme o espaço disponível.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Descarte Inicial</h3><p>Os primeiros 1–2mm de chuva arrastam poeira e poluentes do telhado. Um desvio simples ("first flush") descarta essa água automaticamente.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Filtragem</h3><p>Uma tela fina retém folhas e detritos. Para uso em descarga e limpeza, a filtragem básica já é suficiente e de baixíssimo custo.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Distribuição</h3><p>Conecte o reservatório aos pontos de uso não potável: descarga, lavagem de calçadas, rega de jardins e limpeza geral.</p></div>
+    </div>
+    <div class="reuso-bottom">
+      <div class="reuso-usos">
+        <h3>Onde usar a água captada?</h3>
+        <div class="uso-item">🚽 Descarga do vaso sanitário<span class="uso-pct">~30% do consumo</span></div>
+        <div class="uso-item">🌱 Rega de plantas e hortas<span class="uso-pct">~5%</span></div>
+        <div class="uso-item">🚗 Lavagem de veículos<span class="uso-pct">~8%</span></div>
+        <div class="uso-item">🧹 Limpeza de calçadas e pátios<span class="uso-pct">~6%</span></div>
+        <div class="uso-item">👕 Lavagem de roupas (com filtro)<span class="uso-pct">~22%</span></div>
+        <div class="uso-item">🌳 Irrigação de áreas verdes<span class="uso-pct">~5%</span></div>
+      </div>
+      <div class="reuso-alert">
+        <h3>⚠️ Uso seguro da água de chuva</h3>
+        <p>A água captada <strong>não deve ser usada para beber, cozinhar ou higiene pessoal</strong> sem tratamento específico. Para consumo humano, utilize sempre água tratada.</p>
+        <p>Verifique a legislação municipal para instalações maiores. A NBR 15527 regula o aproveitamento de água de chuva no Brasil.</p>
+        <span class="alert-big">50%<small>de redução possível na conta de água com sistema doméstico de reuso pluvial</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSCIENTIZAÇÃO -->
+<section id="redes" style="background:var(--azul-prof)">
+  <div class="inner">
+    <div class="redes-head">
+      <div class="s-tag">Conscientização</div>
+      <h2 class="s-title" style="color:var(--branco)">Como reutilizar a água no dia a dia</h2>
+      <p style="color:rgba(255,255,255,.6);max-width:580px;margin:0 auto">Pequenas mudanças de hábito têm um impacto enorme. Confira guias práticos e passo a passo para começar agora mesmo na sua casa.</p>
+    </div>
+
+    <!-- TABS -->
+    <div class="cons-tabs">
+      <button class="cons-tab active" onclick="showTab('chuva',this)">🌧️ Água da Chuva</button>
+      <button class="cons-tab" onclick="showTab('banho',this)">🚿 Banho Consciente</button>
+      <button class="cons-tab" onclick="showTab('cozinha',this)">🍽️ Cozinha</button>
+      <button class="cons-tab" onclick="showTab('jardim',this)">🌱 Jardim</button>
+      <button class="cons-tab" onclick="showTab('vazamento',this)">🔧 Vazamentos</button>
+    </div>
+
+    <!-- CHUVA -->
+    <div class="cons-panel" id="tab-chuva">
+      <div class="cons-intro">
+        <div class="cons-ico">🌧️</div>
+        <div>
+          <h3>Captação e reuso de água da chuva</h3>
+          <p>Com um sistema simples, é possível reduzir até <strong>50% da sua conta de água</strong>. A água captada pode ser usada em descargas, limpeza e irrigação.</p>
+        </div>
+      </div>
+      <div class="cons-steps-grid">
+        <div class="cons-step"><div class="cs-num">1</div><div class="cs-body"><strong>Escolha o local de captação</strong><p>Identifique o telhado ou área impermeável da casa. Quanto maior a superfície, mais água é captada. Verifique se há calhas instaladas ou se precisam ser adaptadas.</p></div></div>
+        <div class="cons-step"><div class="cs-num">2</div><div class="cs-body"><strong>Instale um desvio de primeira chuva</strong><p>Os primeiros minutos de chuva carregam poluição do telhado. Um "first flush" (desvio simples de PVC) descarta automaticamente essa água suja antes de encher o reservatório.</p></div></div>
+        <div class="cons-step"><div class="cs-num">3</div><div class="cs-body"><strong>Escolha o reservatório</strong><p>Para uso doméstico básico, um tonel de 200L já faz diferença. Para famílias maiores, cisternas de 500L a 1000L são ideais. Mantenha sempre tampado para evitar mosquitos.</p></div></div>
+        <div class="cons-step"><div class="cs-num">4</div><div class="cs-body"><strong>Instale uma tela de filtragem</strong><p>Coloque uma tela fina na entrada do reservatório para barrar folhas, galhos e detritos. Limpe a tela a cada chuva forte ou pelo menos uma vez por mês.</p></div></div>
+        <div class="cons-step"><div class="cs-num">5</div><div class="cs-body"><strong>Conecte aos pontos de uso</strong><p>Ligue o reservatório (por gravidade ou bomba pequena) aos pontos de uso não potável: descarga do banheiro, torneira de serviço para limpeza e mangueira para o jardim.</p></div></div>
+        <div class="cons-step"><div class="cs-num">6</div><div class="cs-body"><strong>Higienize o reservatório</strong><p>A cada 6 meses, esvazie, esfregue as paredes internas e adicione uma solução de água sanitária diluída (1 colher por 10L). Enxague bem antes de usar novamente.</p></div></div>
+      </div>
+      <div class="cons-alert">⚠️ <strong>Importante:</strong> Água de chuva captada não deve ser usada para beber, cozinhar ou higiene pessoal sem tratamento específico.</div>
+    </div>
+
+    <!-- BANHO -->
+    <div class="cons-panel hidden" id="tab-banho">
+      <div class="cons-intro">
+        <div class="cons-ico">🚿</div>
+        <div>
+          <h3>Banho consciente: pequeno esforço, grande resultado</h3>
+          <p>Um banho de 15 minutos gasta até <strong>180 litros</strong>. Reduzindo para 5 minutos, você economiza 90 litros — só hoje. Multiplicado pela família, são milhares de litros por mês.</p>
+        </div>
+      </div>
+      <div class="cons-steps-grid">
+        <div class="cons-step"><div class="cs-num">1</div><div class="cs-body"><strong>Use um timer ou música como referência</strong><p>Escolha uma música de 5 minutos e use como sinal de encerramento. Há aplicativos gratuitos de timer para banho que tocam um alerta quando o tempo acaba.</p></div></div>
+        <div class="cons-step"><div class="cs-num">2</div><div class="cs-body"><strong>Feche o chuveiro ao se ensaboar</strong><p>Molhe o corpo, feche a água, aplique sabonete e shampoo, depois abra novamente para enxaguar. Esse hábito sozinho pode economizar de 30 a 50 litros por banho.</p></div></div>
+        <div class="cons-step"><div class="cs-num">3</div><div class="cs-body"><strong>Ajuste a temperatura antes de entrar</strong><p>Deixar a água escorrer esperando aquecer desperdiça litros preciosos. Ajuste o boiler ou aquecedor antes, ou colete essa água fria em um balde para outros usos.</p></div></div>
+        <div class="cons-step"><div class="cs-num">4</div><div class="cs-body"><strong>Instale um regulador de vazão</strong><p>Arejadores e redutores de vazão custam menos de R$30 e reduzem o fluxo do chuveiro sem afetar a sensação. São fáceis de instalar e não requerem obras.</p></div></div>
+        <div class="cons-step"><div class="cs-num">5</div><div class="cs-body"><strong>Reutilize a água do balde</strong><p>Coloque um balde no chuveiro durante o banho para coletar a água que sobra. Use para dar descarga, limpar o banheiro ou regar plantas.</p></div></div>
+      </div>
+      <div class="cons-destaque">💧 Uma família de 4 pessoas que reduz o banho de 15 para 5 minutos economiza até <strong>10.800 litros por mês.</strong></div>
+    </div>
+
+    <!-- COZINHA -->
+    <div class="cons-panel hidden" id="tab-cozinha">
+      <div class="cons-intro">
+        <div class="cons-ico">🍽️</div>
+        <div>
+          <h3>Cozinha sem desperdício</h3>
+          <p>A cozinha é responsável por cerca de <strong>35% do consumo doméstico</strong> de água. Com hábitos simples, é possível cortar esse número pela metade.</p>
+        </div>
+      </div>
+      <div class="cons-steps-grid">
+        <div class="cons-step"><div class="cs-num">1</div><div class="cs-body"><strong>Lave a louça em bacia</strong><p>Em vez de deixar a torneira aberta enquanto lava, encha uma bacia com água e detergente para esfregar, e outra com água limpa para enxaguar. Economiza até 80% da água usada.</p></div></div>
+        <div class="cons-step"><div class="cs-num">2</div><div class="cs-body"><strong>Descongele alimentos na geladeira</strong><p>Descongelar carnes e alimentos sob água corrente é um enorme desperdício. Transfira do freezer para a geladeira na véspera — é mais seguro e não gasta uma gota.</p></div></div>
+        <div class="cons-step"><div class="cs-num">3</div><div class="cs-body"><strong>Reaproveite a água do cozimento</strong><p>A água usada para cozinhar legumes, massas e ovos, após esfriar, pode regar plantas (é rica em nutrientes) ou ser usada para lavar a calçada.</p></div></div>
+        <div class="cons-step"><div class="cs-num">4</div><div class="cs-body"><strong>Verifique a torneira regularmente</strong><p>Uma torneira pingando goteja até 46 litros por dia. Troque o vedante (anel de borracha) quando notar qualquer gotejamento. A peça custa menos de R$5.</p></div></div>
+        <div class="cons-step"><div class="cs-num">5</div><div class="cs-body"><strong>Evite usar água para varrer</strong><p>Usar mangueira para limpar a calçada ou a garagem desperdiça centenas de litros. Use vassoura para a limpeza seca e só molhe se for indispensável.</p></div></div>
+      </div>
+      <div class="cons-destaque">💧 Fechar a torneira enquanto lava a louça economiza até <strong>120 litros por refeição.</strong></div>
+    </div>
+
+    <!-- JARDIM -->
+    <div class="cons-panel hidden" id="tab-jardim">
+      <div class="cons-intro">
+        <div class="cons-ico">🌱</div>
+        <div>
+          <h3>Jardim e áreas verdes sem desperdício</h3>
+          <p>A irrigação incorreta desperdiça até <strong>40% da água</strong> usada em jardins. Com pequenos ajustes, suas plantas ficam mais saudáveis e você gasta muito menos.</p>
+        </div>
+      </div>
+      <div class="cons-steps-grid">
+        <div class="cons-step"><div class="cs-num">1</div><div class="cs-body"><strong>Regue no horário certo</strong><p>Irrigue cedo pela manhã (antes das 9h) ou ao anoitecer (após as 17h). No calor do dia, até 50% da água evapora antes de chegar às raízes.</p></div></div>
+        <div class="cons-step"><div class="cs-num">2</div><div class="cs-body"><strong>Use a técnica da irrigação por gotejamento</strong><p>Garrafinhas PET furadas na tampa, enterradas ao lado das plantas, liberam água lentamente direto na raiz. Funciona melhor que qualquer mangueira e pode ser feito com materiais reciclados.</p></div></div>
+        <div class="cons-step"><div class="cs-num">3</div><div class="cs-body"><strong>Cubra o solo com mulching</strong><p>Folhas secas, palha ou cascas de árvore ao redor das plantas retêm a umidade do solo, reduzindo a necessidade de irrigação em até 60% e ainda protegem as raízes.</p></div></div>
+        <div class="cons-step"><div class="cs-num">4</div><div class="cs-body"><strong>Prefira plantas nativas ou adaptadas</strong><p>Espécies nativas do bioma local consomem muito menos água. Em vasos, use plantas suculentas ou cactos que sobrevivem longos períodos sem irrigação.</p></div></div>
+        <div class="cons-step"><div class="cs-num">5</div><div class="cs-body"><strong>Conecte a cisterna ao jardim</strong><p>Use a água captada da chuva para irrigar jardins e hortas. É gratuita, já caiu do céu e é perfeita para esse uso, sem qualquer risco à saúde das plantas.</p></div></div>
+      </div>
+      <div class="cons-destaque">🌱 Regar no horário correto e com técnica adequada pode reduzir o consumo do jardim em até <strong>60%.</strong></div>
+    </div>
+
+    <!-- VAZAMENTO -->
+    <div class="cons-panel hidden" id="tab-vazamento">
+      <div class="cons-intro">
+        <div class="cons-ico">🔧</div>
+        <div>
+          <h3>Detecte e corrija vazamentos</h3>
+          <p>Vazamentos invisíveis podem representar até <strong>30% do consumo</strong> de uma residência. Muitos são simples de corrigir sem necessidade de um encanador.</p>
+        </div>
+      </div>
+      <div class="cons-steps-grid">
+        <div class="cons-step"><div class="cs-num">1</div><div class="cs-body"><strong>Faça o teste do hidrômetro</strong><p>Feche todas as torneiras e registros da casa. Anote a leitura do hidrômetro e volte após 1 hora sem usar água. Se o número mudou, há vazamento na rede interna.</p></div></div>
+        <div class="cons-step"><div class="cs-num">2</div><div class="cs-body"><strong>Teste o vaso sanitário com corante</strong><p>Coloque algumas gotas de corante alimentício no reservatório do vaso. Se a cor aparecer na bacia sem dar descarga, a válvula está com defeito e pode desperdiçar até 100L por hora.</p></div></div>
+        <div class="cons-step"><div class="cs-num">3</div><div class="cs-body"><strong>Troque os vedantes desgastados</strong><p>O anel de borracha (vedante) dentro da torneira dura em média 2 anos. Quando a torneira começa a pingar, basta trocar essa peça — custa menos de R$5 e a troca leva 10 minutos.</p></div></div>
+        <div class="cons-step"><div class="cs-num">4</div><div class="cs-body"><strong>Verifique caixas d'água e cisternas</strong><p>Cheque periodicamente se a boia está regulada e se não há transbordamento. Uma boia mal calibrada pode desperdiçar centenas de litros por dia sem que você perceba.</p></div></div>
+        <div class="cons-step"><div class="cs-num">5</div><div class="cs-body"><strong>Inspecione o quintal e calçada</strong><p>Manchas úmidas no chão, musgo em paredes ou rebaixamento do piso podem indicar vazamentos subterrâneos. Nesses casos, acione a companhia de saneamento para verificação.</p></div></div>
+      </div>
+      <div class="cons-alert">🔧 <strong>Dica:</strong> Anote a leitura do seu hidrômetro todo mês e compare. Um aumento brusco sem mudança de hábitos quase sempre indica vazamento.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DICAS -->
+<section id="dicas">
+  <div class="inner">
+    <div style="margin-bottom:3rem">
+      <div class="s-tag">Economia no dia a dia</div>
+      <h2 class="s-title">Dicas práticas para sua casa</h2>
+      <p class="s-desc">Pequenas mudanças de hábito fazem uma grande diferença para toda a comunidade.</p>
+    </div>
+    <div class="dicas-grid">
+      <div class="dica"><div class="ico">🚿</div><h3>Banho cronometrado</h3><p>Reduza o banho para até 5 minutos. Use um timer ou uma música curta como referência. Economize até 90 litros por dia.</p></div>
+      <div class="dica"><div class="ico">🚰</div><h3>Feche a torneira</h3><p>Ao escovar os dentes ou lavar a louça, feche a torneira enquanto não estiver usando. Uma torneira aberta gasta 10L por minuto.</p></div>
+      <div class="dica"><div class="ico">🌱</div><h3>Reuse a água</h3><p>A água do enxágue da roupa serve para limpar calçadas. A da chuva pode regar plantas e jardins. Nada precisa ser jogado fora.</p></div>
+      <div class="dica"><div class="ico">🔧</div><h3>Corrija vazamentos</h3><p>Um pequeno vazamento pode desperdiçar 46 litros por dia. Verifique torneiras, vasos sanitários e canos regularmente.</p></div>
+      <div class="dica"><div class="ico">🫧</div><h3>Louça com sabedoria</h3><p>Lave a louça acumulada de uma vez, usando bacias com água. Evite deixar torneira aberta durante toda a lavagem.</p></div>
+      <div class="dica"><div class="ico">🌧️</div><h3>Aproveite a chuva</h3><p>Posicione baldes ou caixas d'água para coletar água da chuva. Use para limpeza geral, regar plantas e lavar calçadas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA -->
+<section id="calculadora">
+  <div class="inner calc-wrap">
+    <div class="calc-head">
+      <div class="s-tag">Ferramenta</div>
+      <h2 class="s-title">Calcule seu consumo mensal</h2>
+      <p>Descubra quanto sua família consome e se está acima da média recomendada.</p>
+    </div>
+    <div class="calc-box">
+      <div class="calc-g">
+        <div class="f"><label>Pessoas na residência</label><input type="number" id="pessoas" min="1" max="20" value="3"/></div>
+        <div class="f"><label>Tempo médio de banho (min)</label><input type="number" id="banho" min="1" max="60" value="10"/></div>
+        <div class="f"><label>Banhos por pessoa por dia</label><select id="qtdBanhos"><option value="1">1 banho</option><option value="2" selected>2 banhos</option><option value="3">3 banhos</option></select></div>
+        <div class="f"><label>Lavagens de roupa por semana</label><input type="number" id="lavagens" min="0" max="30" value="3"/></div>
+      </div>
+      <button class="calc-btn" onclick="calcular()">Calcular consumo estimado</button>
+      <div id="resultado">
+        <div id="res-n">—</div>
+        <div id="res-l">litros por mês estimados</div>
+        <div id="res-s"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVISOS -->
+<section id="avisos">
+  <div class="inner">
+    <div style="margin-bottom:2.5rem">
+      <div class="s-tag">Informações</div>
+      <h2 class="s-title">Avisos e campanhas</h2>
+      <p class="s-desc">Fique por dentro das ações do projeto e alertas sobre o uso da água na região.</p>
+    </div>
+
+    <!-- ODS 6 BANNER -->
+    <div class="ods6-banner">
+      <div class="ods6-left">
+        <div class="ods6-icon">
+          <div class="ods6-num-big">6</div>
+          <div class="ods6-sub">ODS</div>
+        </div>
+        <div class="ods6-info">
+          <div class="ods6-label">Objetivo de Desenvolvimento Sustentável</div>
+          <h3 class="ods6-title">Água Potável e Saneamento para Todos</h3>
+          <p class="ods6-desc">As ações deste projeto estão alinhadas ao <strong>ODS 6 da ONU</strong>, que busca garantir disponibilidade e gestão sustentável da água e saneamento para todas as pessoas até 2030.</p>
+        </div>
+      </div>
+      <div class="ods6-metas">
+        <div class="ods6-meta"><span class="ods6-dot"></span><span>Acesso universal à água potável segura</span></div>
+        <div class="ods6-meta"><span class="ods6-dot"></span><span>Saneamento e higiene adequados para todos</span></div>
+        <div class="ods6-meta"><span class="ods6-dot"></span><span>Redução da poluição hídrica e melhoria da qualidade da água</span></div>
+        <div class="ods6-meta"><span class="ods6-dot"></span><span>Uso eficiente da água em todos os setores</span></div>
+        <div class="ods6-fonte">Fonte: <a href="https://www.un.org/sustainabledevelopment/water-and-sanitation/" target="_blank" rel="noopener">ONU — Objetivos de Desenvolvimento Sustentável (sdgs.un.org)</a></div>
+      </div>
+    </div>
+    <div class="avisos-grid">
+      <div class="av urg"><div class="av-top"><div class="av-ico">⚠️</div><div class="av-dt">Março 2025</div></div><h4>Alerta: consumo elevado nos bairros centrais</h4><p>O consumo médio está 18% acima do esperado neste mês. Reforçamos a importância de adotar hábitos de economia imediatamente.</p><span class="av-badge u">Urgente</span></div>
+      <div class="av dest"><div class="av-top"><div class="av-ico">🌍</div><div class="av-dt">22 Março 2025</div></div><h4>Dia Mundial da Água — 22 de março</h4><p>Atividades comemorativas: distribuição de mudas, exposição fotográfica e palestra educativa no centro comunitário. Entrada gratuita.</p><span class="av-badge n">Evento</span></div>
+      <div class="av"><div class="av-top"><div class="av-ico">📋</div><div class="av-dt">Durante março de 2025</div></div><h4>Distribuição de material educativo</h4><p>Voluntários estarão distribuindo panfletos e cartilhas nas feiras livres e escolas da região. Venha participar como voluntário!</p><span class="av-badge">Voluntariado</span></div>
+      <div class="av dest"><div class="av-top"><div class="av-ico">🎓</div><div class="av-dt">Abril 2025</div></div><h4>Oficina: captação de água da chuva</h4><p>Aprenda na prática como montar um sistema simples de captação pluvial para sua residência. Gratuito, com material incluso.</p><span class="av-badge n">Novo</span></div>
+      <div class="av"><div class="av-top"><div class="av-ico">💧</div><div class="av-dt">A confirmar</div></div><h4>Manutenção na rede hídrica</h4><p>Haverá interrupção no abastecimento em alguns setores para manutenção preventiva. Armazene água com antecedência.</p><span class="av-badge">Infraestrutura</span></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PARTICIPAÇÃO -->
+<section id="participacao">
+  <div class="inner part-wrap">
+    <div class="part-head">
+      <div class="s-tag">Comunidade</div>
+      <h2 class="s-title">Sua ideia pode ajudar</h2>
+      <p class="s-desc" style="margin:0 auto;text-align:center">Compartilhe sugestões, relate problemas ou proponha ações para melhorar o uso consciente da água na sua comunidade.</p>
+    </div>
+    <div class="form-box" style="text-align:center;padding:2.5rem">
+      <p style="font-size:1rem;color:var(--texto-leve);line-height:1.8;margin-bottom:2rem">Clique no botão abaixo para acessar o formulário e enviar sua contribuição. É rápido e fácil! 💧</p>
+      <a href="#" class="btn-p" style="font-size:1rem;padding:1rem 3rem;display:inline-block">Acessar formulário de participação</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot">
+    <div class="foot-logo">Água Consciente 💧</div>
+    <div class="foot-txt">Projeto de Extensão Universitária<br>Água Potável e Saneamento — Diagnóstico do Desperdício em Regiões Urbanas<br>Promovendo sustentabilidade e consumo responsável em nossa comunidade.</div>
+    <div class="foot-links">
+      <a href="#sobre">Projeto</a>
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#reuso">Reuso</a>
+      <a href="#redes">Comunicação</a>
+      <a href="#participacao">Participe</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function calcular(){
+  const p=parseFloat(document.getElementById('pessoas').value)||3;
+  const b=parseFloat(document.getElementById('banho').value)||10;
+  const q=parseFloat(document.getElementById('qtdBanhos').value)||1;
+  const l=parseFloat(document.getElementById('lavagens').value)||3;
+  const total=Math.round((b*12*q*p*30)+(l*4.3*100)+(p*15*30)+(p*6*6*30));
+  const media=p*3300;
+  const div=document.getElementById('resultado');
+  div.style.display='block';
+  document.getElementById('res-n').textContent=total.toLocaleString('pt-BR');
+  let s='';
+  if(total<=media*.85){s='✅ Ótimo! Seu consumo está abaixo da média recomendada.';div.style.borderColor='rgba(0,201,177,.4)'}
+  else if(total<=media*1.15){s='🟡 Consumo dentro da média. Há espaço para melhorar!';div.style.borderColor='rgba(255,200,50,.4)'}
+  else{s='⚠️ Consumo acima da média. Confira as dicas para reduzir!';div.style.borderColor='rgba(224,123,57,.4)'}
+  document.getElementById('res-s').textContent=s;
+}
+
+function showTab(id, btn){
+  document.querySelectorAll('.cons-panel').forEach(p=>p.classList.add('hidden'));
+  document.querySelectorAll('.cons-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.remove('hidden');
+  btn.classList.add('active');
+}
+
+</script>
+</body>
+</html>
