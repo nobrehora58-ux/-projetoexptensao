@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Água Consciente — Cada gota importa</title>
+  <title>Água Consciente: Cada gota importa</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -493,7 +493,7 @@
       </div>
       <button class="calc-btn" onclick="calcular()">Calcular consumo estimado</button>
       <div id="resultado">
-        <div id="res-n">—</div>
+        <div id="res-n"></div>
         <div id="res-l">litros por mês estimados</div>
         <div id="res-s"></div>
       </div>
@@ -552,40 +552,61 @@
 
 <script>
 function calcular(){
-  const p=parseFloat(document.getElementById('pessoas').value)||3;
-  const b=parseFloat(document.getElementById('banho').value)||10;
-  const q=parseFloat(document.getElementById('qtdBanhos').value)||1;
-  const l=parseFloat(document.getElementById('lavagens').value)||3;
-  const total=Math.round((b*12*q*p*30)+(l*4.3*100)+(p*15*30)+(p*6*6*30));
-  const media=p*3300;
-  const div=document.getElementById('resultado');
-  div.style.display='block';
-  document.getElementById('res-n').textContent=total.toLocaleString('pt-BR');
-  let s='';
-  if(total<=media*.85){s='✅ Ótimo! Seu consumo está abaixo da média recomendada.';div.style.borderColor='rgba(0,201,177,.4)'}
-  else if(total<=media*1.15){s='🟡 Consumo dentro da média. Há espaço para melhorar!';div.style.borderColor='rgba(255,200,50,.4)'}
-  else{s='⚠️ Consumo acima da média. Confira as dicas para reduzir!';div.style.borderColor='rgba(224,123,57,.4)'}
-  document.getElementById('res-s').textContent=s;
+  const p = parseFloat(document.getElementById('pessoas').value) || 3;
+  const b = parseFloat(document.getElementById('banho').value) || 10;
+  const q = parseFloat(document.getElementById('qtdBanhos').value) || 1;
+  const l = parseFloat(document.getElementById('lavagens').value) || 3;
+
+  // Fórmula com base OMS:
+  // Banho: fluxo realista de chuveiro = 9L/min (OMS/referência internacional)
+  // Vaso sanitário: ~6L por uso, ~5x/dia por pessoa
+  // Torneira (escovação, mãos, cozinha): ~15L/pessoa/dia
+  // Lavagem de roupa: ~100L por lavagem (máquina doméstica)
+  const lBanho = b * 9 * q * p * 30;           // banho
+  const lVaso  = 6 * 5 * p * 30;               // descarga
+  const lTorneira = 15 * p * 30;               // torneiras em geral
+  const lRoupa = l * 4.3 * 100;                // lavagens de roupa
+  const total  = Math.round(lBanho + lVaso + lTorneira + lRoupa);
+
+  // Consumo per capita diário
+  const percapita = total / p / 30;
+
+  const div = document.getElementById('resultado');
+  div.style.display = 'block';
+  document.getElementById('res-n').textContent = total.toLocaleString('pt-BR');
+
+  let s = '';
+  if (percapita <= 150) {
+    s = '🟢 Consumo aceitável — dentro da referência OMS (até 150L/pessoa/dia).';
+    div.style.borderColor = 'rgba(0,201,177,.4)';
+  } else if (percapita <= 200) {
+    s = '🟡 Consumo moderado — acima da referência OMS. Há espaço para melhorar!';
+    div.style.borderColor = 'rgba(255,200,50,.4)';
+  } else {
+    s = '🔴 Consumo alto — acima de 200L/pessoa/dia. Confira as dicas para reduzir!';
+    div.style.borderColor = 'rgba(224,123,57,.4)';
+  }
+  document.getElementById('res-s').textContent = s;
 }
 
-function copiar(id,btn){
-  const txt=document.getElementById(id).textContent;
-  navigator.clipboard.writeText(txt).then(()=>{
-    btn.textContent='✅ Copiado!';
+function copiar(id, btn){
+  const txt = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    btn.textContent = '✅ Copiado!';
     btn.classList.add('copied');
-    setTimeout(()=>{btn.textContent='📋 Copiar legenda';btn.classList.remove('copied')},2500);
+    setTimeout(() => { btn.textContent = '📋 Copiar legenda'; btn.classList.remove('copied'); }, 2500);
   });
 }
 
 function enviar(){
-  const nome=document.getElementById('nome').value.trim();
-  const msg=document.getElementById('mensagem').value.trim();
-  if(!nome||!msg){alert('Por favor, preencha seu nome e sua mensagem.');return}
-  document.getElementById('success-msg').style.display='block';
-  document.getElementById('nome').value='';
-  document.getElementById('bairro').value='';
-  document.getElementById('mensagem').value='';
-  document.getElementById('tipo').value='';
+  const nome = document.getElementById('nome').value.trim();
+  const msg  = document.getElementById('mensagem').value.trim();
+  if (!nome || !msg) { alert('Por favor, preencha seu nome e sua mensagem.'); return; }
+  document.getElementById('success-msg').style.display = 'block';
+  document.getElementById('nome').value = '';
+  document.getElementById('bairro').value = '';
+  document.getElementById('mensagem').value = '';
+  document.getElementById('tipo').value = '';
 }
 </script>
 </body>
