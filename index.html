@@ -386,7 +386,6 @@
       <p>Posts prontos para Instagram, Facebook e WhatsApp. Clique em "Copiar legenda" e publique agora mesmo.</p>
     </div>
     <div class="posts-grid">
-
       <div class="post-card">
         <div class="post-visual post-v1"><span>💧</span><span class="post-stat">38%</span></div>
         <div class="post-body">
@@ -397,7 +396,6 @@
           <button class="copy-btn" onclick="copiar('leg1',this)">📋 Copiar legenda</button>
         </div>
       </div>
-
       <div class="post-card">
         <div class="post-visual post-v2"><span>🌧️</span><span class="post-stat">60%</span></div>
         <div class="post-body">
@@ -408,7 +406,6 @@
           <button class="copy-btn" onclick="copiar('leg2',this)">📋 Copiar legenda</button>
         </div>
       </div>
-
       <div class="post-card">
         <div class="post-visual post-v3"><span>⚠️</span><span class="post-stat">46L</span></div>
         <div class="post-body">
@@ -419,7 +416,6 @@
           <button class="copy-btn" onclick="copiar('leg3',this)">📋 Copiar legenda</button>
         </div>
       </div>
-
       <div class="post-card">
         <div class="post-visual post-v4"><span>🚿</span><span class="post-stat">90L</span></div>
         <div class="post-body">
@@ -430,7 +426,6 @@
           <button class="copy-btn" onclick="copiar('leg4',this)">📋 Copiar legenda</button>
         </div>
       </div>
-
       <div class="post-card">
         <div class="post-visual post-v5"><span>🌍</span><span class="post-stat">2bi</span></div>
         <div class="post-body">
@@ -441,7 +436,6 @@
           <button class="copy-btn" onclick="copiar('leg5',this)">📋 Copiar legenda</button>
         </div>
       </div>
-
       <div class="post-card">
         <div class="post-visual post-v6"><span>📢</span><span class="post-stat">30%</span></div>
         <div class="post-body">
@@ -452,7 +446,6 @@
           <button class="copy-btn" onclick="copiar('leg6',this)">📋 Copiar legenda</button>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -539,81 +532,6 @@
 <footer>
   <div class="foot">
     <div class="foot-logo">Água Consciente 💧</div>
-    <div class="foot-txt">Projeto de Extensão Universitária<br>Água Potável e Saneamento — Diagnóstico do Desperdício em Regiões Urbanas<br>Promovendo sustentabilidade e consumo responsável em nossa comunidade.</div>
-    <div class="foot-links">
-      <a href="#sobre">Projeto</a>
-      <a href="#diagnostico">Diagnóstico</a>
-      <a href="#reuso">Reuso</a>
-      <a href="#redes">Comunicação</a>
-      <a href="#participacao">Participe</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-function calcular(){
-  const p = parseFloat(document.getElementById('pessoas').value) || 3;
-  const b = parseFloat(document.getElementById('banho').value) || 10;
-  const q = parseFloat(document.getElementById('qtdBanhos').value) || 1;
-  const l = parseFloat(document.getElementById('lavagens').value) || 3;
-
-  // Fórmula com base OMS:
-  // Banho: fluxo realista de chuveiro = 9L/min (OMS/referência internacional)
-  // Vaso sanitário: ~6L por uso, ~5x/dia por pessoa
-  // Torneira (escovação, mãos, cozinha): ~15L/pessoa/dia
-  // Lavagem de roupa: ~100L por lavagem (máquina doméstica)
-  const lBanho = b * 9 * q * p * 30;           // banho
-  const lVaso  = 6 * 5 * p * 30;               // descarga
-  const lTorneira = 15 * p * 30;               // torneiras em geral
-  const lRoupa = l * 4.3 * 100;                // lavagens de roupa
-  const total  = Math.round(lBanho + lVaso + lTorneira + lRoupa);
-
-  // Consumo per capita diário
-  const percapita = total / p / 30;
-
-  const div = document.getElementById('resultado');
-  div.style.display = 'block';
-  document.getElementById('res-n').textContent = total.toLocaleString('pt-BR');
-
-  let s = '';
-  if (percapita <= 150) {
-    s = '🟢 Consumo aceitável — dentro da referência OMS (até 150L/pessoa/dia).';
-    div.style.borderColor = 'rgba(0,201,177,.4)';
-  } else if (percapita <= 200) {
-    s = '🟡 Consumo moderado — acima da referência OMS. Há espaço para melhorar!';
-    div.style.borderColor = 'rgba(255,200,50,.4)';
-  } else {
-    s = '🔴 Consumo alto — acima de 200L/pessoa/dia. Confira as dicas para reduzir!';
-    div.style.borderColor = 'rgba(224,123,57,.4)';
-  }
-  document.getElementById('res-s').textContent = s;
-}
-
-function copiar(id, btn){
-  const txt = document.getElementById(id).textContent;
-  navigator.clipboard.writeText(txt).then(() => {
-    btn.textContent = '✅ Copiado!';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = '📋 Copiar legenda'; btn.classList.remove('copied'); }, 2500);
-  });
-}
-
-function enviar(){
-  const nome = document.getElementById('nome').value.trim();
-  const msg  = document.getElementById('mensagem').value.trim();
-  if (!nome || !msg) { alert('Por favor, preencha seu nome e sua mensagem.'); return; }
-  document.getElementById('success-msg').style.display = 'block';
-  document.getElementById('nome').value = '';
-  document.getElementById('bairro').value = '';
-  document.getElementById('mensagem').value = '';
-  document.getElementById('tipo').value = '';
-}
-</script>
-</body>
-</html><!-- FOOTER -->
-<footer>
-  <div class="foot">
-    <div class="foot-logo">Água Consciente 💧</div>
     <div class="foot-txt">Universidade Candido Mendes<br>Projeto de Extensão Universitária<br>Água Potável e Saneamento — Diagnóstico do Desperdício em Regiões Urbanas<br>Promovendo sustentabilidade e consumo responsável em nossa comunidade.</div>
     <div class="foot-links">
       <a href="#sobre">Projeto</a>
@@ -651,29 +569,54 @@ function enviar(){
 
 <script>
 function calcular(){
-  const p=parseFloat(document.getElementById('pessoas').value)||3;
-  const b=parseFloat(document.getElementById('banho').value)||10;
-  const q=parseFloat(document.getElementById('qtdBanhos').value)||1;
-  const l=parseFloat(document.getElementById('lavagens').value)||3;
-  const total=Math.round((b*12*q*p*30)+(l*4.3*100)+(p*15*30)+(p*6*6*30));
-  const media=p*3300;
-  const div=document.getElementById('resultado');
-  div.style.display='block';
-  document.getElementById('res-n').textContent=total.toLocaleString('pt-BR');
-  let s='';
-  if(total<=media*.85){s='✅ Ótimo! Seu consumo está abaixo da média recomendada.';div.style.borderColor='rgba(0,201,177,.4)'}
-  else if(total<=media*1.15){s='🟡 Consumo dentro da média. Há espaço para melhorar!';div.style.borderColor='rgba(255,200,50,.4)'}
-  else{s='⚠️ Consumo acima da média. Confira as dicas para reduzir!';div.style.borderColor='rgba(224,123,57,.4)'}
-  document.getElementById('res-s').textContent=s;
+  const p = parseFloat(document.getElementById('pessoas').value) || 3;
+  const b = parseFloat(document.getElementById('banho').value) || 10;
+  const q = parseFloat(document.getElementById('qtdBanhos').value) || 1;
+  const l = parseFloat(document.getElementById('lavagens').value) || 3;
+  const lBanho = b * 9 * q * p * 30;
+  const lVaso  = 6 * 5 * p * 30;
+  const lTorneira = 15 * p * 30;
+  const lRoupa = l * 4.3 * 100;
+  const total  = Math.round(lBanho + lVaso + lTorneira + lRoupa);
+  const percapita = total / p / 30;
+  const div = document.getElementById('resultado');
+  div.style.display = 'block';
+  document.getElementById('res-n').textContent = total.toLocaleString('pt-BR');
+  let s = '';
+  if (percapita <= 150) {
+    s = '🟢 Consumo aceitável — dentro da referência OMS (até 150L/pessoa/dia).';
+    div.style.borderColor = 'rgba(0,201,177,.4)';
+  } else if (percapita <= 200) {
+    s = '🟡 Consumo moderado — acima da referência OMS. Há espaço para melhorar!';
+    div.style.borderColor = 'rgba(255,200,50,.4)';
+  } else {
+    s = '🔴 Consumo alto — acima de 200L/pessoa/dia. Confira as dicas para reduzir!';
+    div.style.borderColor = 'rgba(224,123,57,.4)';
+  }
+  document.getElementById('res-s').textContent = s;
 }
 
-function showTab(id, btn){
-  document.querySelectorAll('.cons-panel').forEach(p=>p.classList.add('hidden'));
-  document.querySelectorAll('.cons-tab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.remove('hidden');
-  btn.classList.add('active');
+function copiar(id, btn){
+  const txt = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    btn.textContent = '✅ Copiado!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copiar legenda'; btn.classList.remove('copied'); }, 2500);
+  });
 }
 
+function enviar(){
+  const nome = document.getElementById('nome').value.trim();
+  const msg  = document.getElementById('mensagem').value.trim();
+  if (!nome || !msg) { alert('Por favor, preencha seu nome e sua mensagem.'); return; }
+  document.getElementById('success-msg').style.display = 'block';
+  document.getElementById('nome').value = '';
+  document.getElementById('bairro').value = '';
+  document.getElementById('mensagem').value = '';
+  document.getElementById('tipo').value = '';
+}
 </script>
 </body>
 </html>
+HTMLEOF
+echo "Done"
