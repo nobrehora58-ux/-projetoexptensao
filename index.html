@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Água Consciente — Cada gota importa</title>
-  <link rel="icon" type="image/png" href="5625934.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -224,54 +223,11 @@
     .foot-links a{font-size:.82rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
     .foot-links a:hover{color:var(--agua)}
 
-    /* CONSCIENTIZAÇÃO TABS */
-    .cons-tabs{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem}
-    .cons-tab{padding:.65rem 1.4rem;border-radius:100px;border:1.5px solid rgba(77,184,232,.25);background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
-    .cons-tab:hover{border-color:var(--turquesa);color:var(--turquesa)}
-    .cons-tab.active{background:var(--turquesa);border-color:var(--turquesa);color:var(--azul-prof)}
-    .cons-panel{animation:fadeIn .3s ease}
-    .cons-panel.hidden{display:none}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-    .cons-intro{display:flex;gap:1.5rem;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(77,184,232,.15);border-radius:16px;padding:1.75rem;margin-bottom:2rem}
-    .cons-ico{font-size:3rem;flex-shrink:0}
-    .cons-intro h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--agua);margin-bottom:.5rem}
-    .cons-intro p{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.7}
-    .cons-intro strong{color:var(--turquesa)}
-    .cons-steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
-    .cons-step{display:flex;gap:1rem;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(77,184,232,.1);border-radius:12px;padding:1.25rem;transition:border-color .2s}
-    .cons-step:hover{border-color:rgba(0,201,177,.35)}
-    .cs-num{min-width:32px;height:32px;border-radius:50%;background:var(--turquesa);color:var(--azul-prof);font-weight:900;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Playfair Display',serif}
-    .cs-body strong{display:block;font-size:.9rem;color:var(--agua);margin-bottom:.35rem}
-    .cs-body p{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.65;margin:0}
-    .cons-destaque{background:rgba(0,201,177,.1);border:1px solid rgba(0,201,177,.3);border-radius:12px;padding:1.25rem 1.5rem;font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.6}
-    .cons-destaque strong{color:var(--turquesa)}
-    .cons-alert{background:rgba(224,123,57,.1);border:1px solid rgba(224,123,57,.3);border-radius:12px;padding:1.25rem 1.5rem;font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.6}
-    .cons-alert strong{color:var(--alerta)}
-
-    /* ODS 6 BANNER */
-    .ods6-banner{display:grid;grid-template-columns:1fr 1fr;gap:2rem;background:linear-gradient(135deg,#0a4a7a,#006b5e);border-radius:20px;padding:2.5rem;margin-bottom:2.5rem;border:1px solid rgba(0,201,177,.25);position:relative;overflow:hidden}
-    .ods6-banner::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(0,201,177,.12),transparent 70%);border-radius:50%;pointer-events:none}
-    .ods6-left{display:flex;gap:1.5rem;align-items:flex-start}
-    .ods6-icon{background:rgba(0,201,177,.18);border:2px solid rgba(0,201,177,.5);border-radius:14px;min-width:70px;height:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
-    .ods6-num-big{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--turquesa);line-height:1}
-    .ods6-sub{font-size:.6rem;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.55);text-transform:uppercase}
-    .ods6-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--turquesa);margin-bottom:.4rem}
-    .ods6-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--branco);font-weight:800;margin-bottom:.65rem;line-height:1.25}
-    .ods6-desc{font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.7}
-    .ods6-desc strong{color:var(--turquesa)}
-    .ods6-metas{display:flex;flex-direction:column;gap:.7rem;justify-content:center}
-    .ods6-meta{display:flex;align-items:flex-start;gap:.6rem;font-size:.85rem;color:rgba(255,255,255,.75);line-height:1.5}
-    .ods6-dot{width:8px;height:8px;border-radius:50%;background:var(--turquesa);flex-shrink:0;margin-top:.4rem}
-    .ods6-fonte{margin-top:1rem;padding-top:.85rem;border-top:1px solid rgba(77,184,232,.15);font-size:.72rem;color:rgba(255,255,255,.4)}
-    .ods6-fonte a{color:rgba(77,184,232,.7);text-decoration:none;transition:color .2s}
-    .ods6-fonte a:hover{color:var(--agua)}
-
     @media(max-width:900px){
       nav{padding:1rem 1.5rem}
       nav ul{gap:1rem}
       section{padding:4rem 1.5rem}
-      .hero-stats,.sobre-grid,.diag-grid,.dados-grid,.dados-visual,.steps,.reuso-bottom,.posts-grid,.dicas-grid,.avisos-grid,.form-g,.calc-g,.ods6-banner,.ods6-left,.cons-steps-grid{grid-template-columns:1fr}
-      .ods6-banner{display:flex;flex-direction:column}
+      .hero-stats,.sobre-grid,.diag-grid,.dados-grid,.dados-visual,.steps,.reuso-bottom,.posts-grid,.dicas-grid,.avisos-grid,.form-g,.calc-g{grid-template-columns:1fr}
       .dado-box.destaque{grid-column:span 1}
       .steps::before{display:none}
       .foot{flex-direction:column;text-align:center}
@@ -325,8 +281,8 @@
       <div class="sobre-text">
         <div class="s-tag">Sobre o projeto</div>
         <h2 class="s-title">Diagnóstico do Desperdício em Regiões Urbanas</h2>
-        <p>Este projeto de extensão universitária atua no combate ao desperdício de água nas cidades. Nossa missão é <strong>alertar sobre os principais focos de desperdício urbano</strong> e conscientizar a população sobre soluções acessíveis para o reuso hídrico.</p>
-        <p>Atuamos por meio de <strong>redes sociais, materiais educativos, eventos comunitários e este canal digital</strong>, levando informação de qualidade para cada bairro e cada família.</p>
+        <p>Este projeto de extensão universitária investiga e combate o desperdício de água nas cidades. Nossa missão é <strong>identificar os principais focos de desperdício urbano</strong>, conscientizar a população e propor soluções acessíveis para o reuso hídrico.</p>
+        <p>Atuamos por meio de <strong>redes sociais, materiais educativos, eventos comunitários e este canal digital</strong> — levando informação de qualidade para cada bairro e cada família.</p>
         <p>O projeto se alinha diretamente ao <strong>Objetivo de Desenvolvimento Sustentável nº 6</strong> da ONU: garantir água potável e saneamento para todos.</p>
         <div class="ods-pill">
           <div class="ods-num">ODS 6</div>
@@ -421,120 +377,83 @@
   </div>
 </section>
 
-<!-- CONSCIENTIZAÇÃO -->
-<section id="redes" style="background:var(--azul-prof)">
+<!-- REDES SOCIAIS -->
+<section id="redes">
   <div class="inner">
     <div class="redes-head">
-      <div class="s-tag">Conscientização</div>
-      <h2 class="s-title" style="color:var(--branco)">Como reutilizar a água no dia a dia</h2>
-      <p style="color:rgba(255,255,255,.6);max-width:580px;margin:0 auto">Pequenas mudanças de hábito têm um impacto enorme. Confira guias práticos e passo a passo para começar agora mesmo na sua casa.</p>
+      <div class="s-tag">Comunicação Digital</div>
+      <h2 class="s-title" style="color:var(--branco)">Conteúdo para redes sociais</h2>
+      <p>Posts prontos para Instagram, Facebook e WhatsApp. Clique em "Copiar legenda" e publique agora mesmo.</p>
     </div>
+    <div class="posts-grid">
 
-    <!-- TABS -->
-    <div class="cons-tabs">
-      <button class="cons-tab active" onclick="showTab('chuva',this)">🌧️ Água da Chuva</button>
-      <button class="cons-tab" onclick="showTab('banho',this)">🚿 Banho Consciente</button>
-      <button class="cons-tab" onclick="showTab('cozinha',this)">🍽️ Cozinha</button>
-      <button class="cons-tab" onclick="showTab('jardim',this)">🌱 Jardim</button>
-      <button class="cons-tab" onclick="showTab('vazamento',this)">🔧 Vazamentos</button>
-    </div>
-
-    <!-- CHUVA -->
-    <div class="cons-panel" id="tab-chuva">
-      <div class="cons-intro">
-        <div class="cons-ico">🌧️</div>
-        <div>
-          <h3>Captação e reuso de água da chuva</h3>
-          <p>Com um sistema simples, é possível reduzir até <strong>50% da sua conta de água</strong>. A água captada pode ser usada em descargas, limpeza e irrigação.</p>
+      <div class="post-card">
+        <div class="post-visual post-v1"><span>💧</span><span class="post-stat">38%</span></div>
+        <div class="post-body">
+          <div class="post-plat">📸 Instagram / Facebook</div>
+          <h4>Dado chocante sobre nossa água tratada</h4>
+          <p class="post-legenda" id="leg1">Você sabia que até 38% da água tratada no Brasil é desperdiçada antes de chegar à sua torneira? São bilhões de litros perdidos por vazamentos em redes antigas. Enquanto isso, 33 milhões de brasileiros ainda não têm acesso à água potável. Informe. Compartilhe. Cobre mudanças. 💧 #ÁguaConsciente #Saneamento #ODS6</p>
+          <div class="post-tags"><span class="tag">#ÁguaConsciente</span><span class="tag">#Saneamento</span><span class="tag">#ODS6</span></div>
+          <button class="copy-btn" onclick="copiar('leg1',this)">📋 Copiar legenda</button>
         </div>
       </div>
-      <div class="cons-steps-grid">
-        <div class="cons-step"><div class="cs-num">1</div><div class="cs-body"><strong>Escolha o local de captação</strong><p>Identifique o telhado ou área impermeável da casa. Quanto maior a superfície, mais água é captada. Verifique se há calhas instaladas ou se precisam ser adaptadas.</p></div></div>
-        <div class="cons-step"><div class="cs-num">2</div><div class="cs-body"><strong>Instale um desvio de primeira chuva</strong><p>Os primeiros minutos de chuva carregam poluição do telhado. Um "first flush" (desvio simples de PVC) descarta automaticamente essa água suja antes de encher o reservatório.</p></div></div>
-        <div class="cons-step"><div class="cs-num">3</div><div class="cs-body"><strong>Escolha o reservatório</strong><p>Para uso doméstico básico, um tonel de 200L já faz diferença. Para famílias maiores, cisternas de 500L a 1000L são ideais. Mantenha sempre tampado para evitar mosquitos.</p></div></div>
-        <div class="cons-step"><div class="cs-num">4</div><div class="cs-body"><strong>Instale uma tela de filtragem</strong><p>Coloque uma tela fina na entrada do reservatório para barrar folhas, galhos e detritos. Limpe a tela a cada chuva forte ou pelo menos uma vez por mês.</p></div></div>
-        <div class="cons-step"><div class="cs-num">5</div><div class="cs-body"><strong>Conecte aos pontos de uso</strong><p>Ligue o reservatório (por gravidade ou bomba pequena) aos pontos de uso não potável: descarga do banheiro, torneira de serviço para limpeza e mangueira para o jardim.</p></div></div>
-        <div class="cons-step"><div class="cs-num">6</div><div class="cs-body"><strong>Higienize o reservatório</strong><p>A cada 6 meses, esvazie, esfregue as paredes internas e adicione uma solução de água sanitária diluída (1 colher por 10L). Enxague bem antes de usar novamente.</p></div></div>
-      </div>
-      <div class="cons-alert">⚠️ <strong>Importante:</strong> Água de chuva captada não deve ser usada para beber, cozinhar ou higiene pessoal sem tratamento específico.</div>
-    </div>
 
-    <!-- BANHO -->
-    <div class="cons-panel hidden" id="tab-banho">
-      <div class="cons-intro">
-        <div class="cons-ico">🚿</div>
-        <div>
-          <h3>Banho consciente: pequeno esforço, grande resultado</h3>
-          <p>Um banho de 15 minutos gasta até <strong>180 litros</strong>. Reduzindo para 5 minutos, você economiza 90 litros — só hoje. Multiplicado pela família, são milhares de litros por mês.</p>
+      <div class="post-card">
+        <div class="post-visual post-v2"><span>🌧️</span><span class="post-stat">60%</span></div>
+        <div class="post-body">
+          <div class="post-plat">📸 Instagram / Reels</div>
+          <h4>Reuso de água da chuva: simples assim</h4>
+          <p class="post-legenda" id="leg2">60% da água da chuva que cai nas nossas cidades vai direto para o esgoto. Mas e se pudesse ir para o vaso sanitário, para regar o jardim, lavar a calçada? Com um sistema simples de captação, você pode reduzir até 50% da sua conta de água. Quer aprender como montar o seu? Segue o projeto 👇 #ReúsoÁguaDaChuva #ÁguaConsciente #Sustentabilidade</p>
+          <div class="post-tags"><span class="tag">#ReúsoPluvial</span><span class="tag">#Sustentabilidade</span></div>
+          <button class="copy-btn" onclick="copiar('leg2',this)">📋 Copiar legenda</button>
         </div>
       </div>
-      <div class="cons-steps-grid">
-        <div class="cons-step"><div class="cs-num">1</div><div class="cs-body"><strong>Use um timer ou música como referência</strong><p>Escolha uma música de 5 minutos e use como sinal de encerramento. Há aplicativos gratuitos de timer para banho que tocam um alerta quando o tempo acaba.</p></div></div>
-        <div class="cons-step"><div class="cs-num">2</div><div class="cs-body"><strong>Feche o chuveiro ao se ensaboar</strong><p>Molhe o corpo, feche a água, aplique sabonete e shampoo, depois abra novamente para enxaguar. Esse hábito sozinho pode economizar de 30 a 50 litros por banho.</p></div></div>
-        <div class="cons-step"><div class="cs-num">3</div><div class="cs-body"><strong>Ajuste a temperatura antes de entrar</strong><p>Deixar a água escorrer esperando aquecer desperdiça litros preciosos. Ajuste o boiler ou aquecedor antes, ou colete essa água fria em um balde para outros usos.</p></div></div>
-        <div class="cons-step"><div class="cs-num">4</div><div class="cs-body"><strong>Instale um regulador de vazão</strong><p>Arejadores e redutores de vazão custam menos de R$30 e reduzem o fluxo do chuveiro sem afetar a sensação. São fáceis de instalar e não requerem obras.</p></div></div>
-        <div class="cons-step"><div class="cs-num">5</div><div class="cs-body"><strong>Reutilize a água do balde</strong><p>Coloque um balde no chuveiro durante o banho para coletar a água que sobra. Use para dar descarga, limpar o banheiro ou regar plantas.</p></div></div>
-      </div>
-      <div class="cons-destaque">💧 Uma família de 4 pessoas que reduz o banho de 15 para 5 minutos economiza até <strong>10.800 litros por mês.</strong></div>
-    </div>
 
-    <!-- COZINHA -->
-    <div class="cons-panel hidden" id="tab-cozinha">
-      <div class="cons-intro">
-        <div class="cons-ico">🍽️</div>
-        <div>
-          <h3>Cozinha sem desperdício</h3>
-          <p>A cozinha é responsável por cerca de <strong>35% do consumo doméstico</strong> de água. Com hábitos simples, é possível cortar esse número pela metade.</p>
+      <div class="post-card">
+        <div class="post-visual post-v3"><span>⚠️</span><span class="post-stat">46L</span></div>
+        <div class="post-body">
+          <div class="post-plat">📲 WhatsApp / Stories</div>
+          <h4>Uma torneira gotejando desperdiça 46L/dia</h4>
+          <p class="post-legenda" id="leg3">⚠️ Um pequeno vazamento na torneira pode desperdiçar 46 litros de água por dia. São 1.380 litros por mês — tudo jogado fora! Verifique torneiras, vasos e canos hoje mesmo. Pequenas atitudes, grande impacto. Encaminhe para sua família 💧 #ÁguaConsciente #EconomiaDeÁgua #DicaDodia</p>
+          <div class="post-tags"><span class="tag">#DicaDodia</span><span class="tag">#EconomiaÁgua</span></div>
+          <button class="copy-btn" onclick="copiar('leg3',this)">📋 Copiar legenda</button>
         </div>
       </div>
-      <div class="cons-steps-grid">
-        <div class="cons-step"><div class="cs-num">1</div><div class="cs-body"><strong>Lave a louça em bacia</strong><p>Em vez de deixar a torneira aberta enquanto lava, encha uma bacia com água e detergente para esfregar, e outra com água limpa para enxaguar. Economiza até 80% da água usada.</p></div></div>
-        <div class="cons-step"><div class="cs-num">2</div><div class="cs-body"><strong>Descongele alimentos na geladeira</strong><p>Descongelar carnes e alimentos sob água corrente é um enorme desperdício. Transfira do freezer para a geladeira na véspera — é mais seguro e não gasta uma gota.</p></div></div>
-        <div class="cons-step"><div class="cs-num">3</div><div class="cs-body"><strong>Reaproveite a água do cozimento</strong><p>A água usada para cozinhar legumes, massas e ovos, após esfriar, pode regar plantas (é rica em nutrientes) ou ser usada para lavar a calçada.</p></div></div>
-        <div class="cons-step"><div class="cs-num">4</div><div class="cs-body"><strong>Verifique a torneira regularmente</strong><p>Uma torneira pingando goteja até 46 litros por dia. Troque o vedante (anel de borracha) quando notar qualquer gotejamento. A peça custa menos de R$5.</p></div></div>
-        <div class="cons-step"><div class="cs-num">5</div><div class="cs-body"><strong>Evite usar água para varrer</strong><p>Usar mangueira para limpar a calçada ou a garagem desperdiça centenas de litros. Use vassoura para a limpeza seca e só molhe se for indispensável.</p></div></div>
-      </div>
-      <div class="cons-destaque">💧 Fechar a torneira enquanto lava a louça economiza até <strong>120 litros por refeição.</strong></div>
-    </div>
 
-    <!-- JARDIM -->
-    <div class="cons-panel hidden" id="tab-jardim">
-      <div class="cons-intro">
-        <div class="cons-ico">🌱</div>
-        <div>
-          <h3>Jardim e áreas verdes sem desperdício</h3>
-          <p>A irrigação incorreta desperdiça até <strong>40% da água</strong> usada em jardins. Com pequenos ajustes, suas plantas ficam mais saudáveis e você gasta muito menos.</p>
+      <div class="post-card">
+        <div class="post-visual post-v4"><span>🚿</span><span class="post-stat">90L</span></div>
+        <div class="post-body">
+          <div class="post-plat">📸 Instagram / Carrossel</div>
+          <h4>Banho de 5 min economiza 90 litros</h4>
+          <p class="post-legenda" id="leg4">Um banho de 15 minutos usa até 180 litros de água. Reduzindo para 5 minutinhos você economiza 90 litros — só hoje! Coloca uma música, usa o timer do celular. Parece pouco, mas multiplicado pela sua família ao longo do mês, faz uma diferença enorme 🌊 Qual é o seu tempo de banho? Conta nos comentários! #ÁguaConsciente #HábitosSustentáveis</p>
+          <div class="post-tags"><span class="tag">#BanhoCurto</span><span class="tag">#Sustentabilidade</span></div>
+          <button class="copy-btn" onclick="copiar('leg4',this)">📋 Copiar legenda</button>
         </div>
       </div>
-      <div class="cons-steps-grid">
-        <div class="cons-step"><div class="cs-num">1</div><div class="cs-body"><strong>Regue no horário certo</strong><p>Irrigue cedo pela manhã (antes das 9h) ou ao anoitecer (após as 17h). No calor do dia, até 50% da água evapora antes de chegar às raízes.</p></div></div>
-        <div class="cons-step"><div class="cs-num">2</div><div class="cs-body"><strong>Use a técnica da irrigação por gotejamento</strong><p>Garrafinhas PET furadas na tampa, enterradas ao lado das plantas, liberam água lentamente direto na raiz. Funciona melhor que qualquer mangueira e pode ser feito com materiais reciclados.</p></div></div>
-        <div class="cons-step"><div class="cs-num">3</div><div class="cs-body"><strong>Cubra o solo com mulching</strong><p>Folhas secas, palha ou cascas de árvore ao redor das plantas retêm a umidade do solo, reduzindo a necessidade de irrigação em até 60% e ainda protegem as raízes.</p></div></div>
-        <div class="cons-step"><div class="cs-num">4</div><div class="cs-body"><strong>Prefira plantas nativas ou adaptadas</strong><p>Espécies nativas do bioma local consomem muito menos água. Em vasos, use plantas suculentas ou cactos que sobrevivem longos períodos sem irrigação.</p></div></div>
-        <div class="cons-step"><div class="cs-num">5</div><div class="cs-body"><strong>Conecte a cisterna ao jardim</strong><p>Use a água captada da chuva para irrigar jardins e hortas. É gratuita, já caiu do céu e é perfeita para esse uso, sem qualquer risco à saúde das plantas.</p></div></div>
-      </div>
-      <div class="cons-destaque">🌱 Regar no horário correto e com técnica adequada pode reduzir o consumo do jardim em até <strong>60%.</strong></div>
-    </div>
 
-    <!-- VAZAMENTO -->
-    <div class="cons-panel hidden" id="tab-vazamento">
-      <div class="cons-intro">
-        <div class="cons-ico">🔧</div>
-        <div>
-          <h3>Detecte e corrija vazamentos</h3>
-          <p>Vazamentos invisíveis podem representar até <strong>30% do consumo</strong> de uma residência. Muitos são simples de corrigir sem necessidade de um encanador.</p>
+      <div class="post-card">
+        <div class="post-visual post-v5"><span>🌍</span><span class="post-stat">2bi</span></div>
+        <div class="post-body">
+          <div class="post-plat">📸 Instagram / Facebook</div>
+          <h4>2 bilhões de pessoas sem água potável</h4>
+          <p class="post-legenda" id="leg5">2 bilhões de pessoas no mundo não têm acesso à água potável segura. Enquanto isso, nós desperdiçamos centenas de litros por dia sem perceber. Acesso à água é direito humano — e também é responsabilidade de cada um de nós. Esse é o ODS 6 da ONU, e é o projeto que a gente defende todos os dias. 💧 #ODS6 #DireitoHumano #ÁguaPotável #Saneamento</p>
+          <div class="post-tags"><span class="tag">#ODS6</span><span class="tag">#DireitoHumano</span><span class="tag">#Saneamento</span></div>
+          <button class="copy-btn" onclick="copiar('leg5',this)">📋 Copiar legenda</button>
         </div>
       </div>
-      <div class="cons-steps-grid">
-        <div class="cons-step"><div class="cs-num">1</div><div class="cs-body"><strong>Faça o teste do hidrômetro</strong><p>Feche todas as torneiras e registros da casa. Anote a leitura do hidrômetro e volte após 1 hora sem usar água. Se o número mudou, há vazamento na rede interna.</p></div></div>
-        <div class="cons-step"><div class="cs-num">2</div><div class="cs-body"><strong>Teste o vaso sanitário com corante</strong><p>Coloque algumas gotas de corante alimentício no reservatório do vaso. Se a cor aparecer na bacia sem dar descarga, a válvula está com defeito e pode desperdiçar até 100L por hora.</p></div></div>
-        <div class="cons-step"><div class="cs-num">3</div><div class="cs-body"><strong>Troque os vedantes desgastados</strong><p>O anel de borracha (vedante) dentro da torneira dura em média 2 anos. Quando a torneira começa a pingar, basta trocar essa peça — custa menos de R$5 e a troca leva 10 minutos.</p></div></div>
-        <div class="cons-step"><div class="cs-num">4</div><div class="cs-body"><strong>Verifique caixas d'água e cisternas</strong><p>Cheque periodicamente se a boia está regulada e se não há transbordamento. Uma boia mal calibrada pode desperdiçar centenas de litros por dia sem que você perceba.</p></div></div>
-        <div class="cons-step"><div class="cs-num">5</div><div class="cs-body"><strong>Inspecione o quintal e calçada</strong><p>Manchas úmidas no chão, musgo em paredes ou rebaixamento do piso podem indicar vazamentos subterrâneos. Nesses casos, acione a companhia de saneamento para verificação.</p></div></div>
-      </div>
-      <div class="cons-alert">🔧 <strong>Dica:</strong> Anote a leitura do seu hidrômetro todo mês e compare. Um aumento brusco sem mudança de hábitos quase sempre indica vazamento.</div>
-    </div>
 
+      <div class="post-card">
+        <div class="post-visual post-v6"><span>📢</span><span class="post-stat">30%</span></div>
+        <div class="post-body">
+          <div class="post-plat">📲 WhatsApp / Comunidade</div>
+          <h4>Você pode economizar 30% só com hábitos</h4>
+          <p class="post-legenda" id="leg6">Feche a torneira ao escovar os dentes. Lave a louça em bacia. Reutilize a água do enxágue. Essas pequenas mudanças podem reduzir em até 30% o consumo da sua casa — sem gastar nada! Conhecimento transforma. Compartilhe esse conteúdo com quem você ama 💙 Projeto Água Consciente | Extensão Universitária #ÁguaConsciente #EconomiaDeÁgua</p>
+          <div class="post-tags"><span class="tag">#EconomiaÁgua</span><span class="tag">#Extensão</span></div>
+          <button class="copy-btn" onclick="copiar('leg6',this)">📋 Copiar legenda</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -590,35 +509,13 @@
       <h2 class="s-title">Avisos e campanhas</h2>
       <p class="s-desc">Fique por dentro das ações do projeto e alertas sobre o uso da água na região.</p>
     </div>
-
-    <!-- ODS 6 BANNER -->
-    <div class="ods6-banner">
-      <div class="ods6-left">
-        <div class="ods6-icon">
-          <div class="ods6-num-big">6</div>
-          <div class="ods6-sub">ODS</div>
-        </div>
-        <div class="ods6-info">
-          <div class="ods6-label">Objetivo de Desenvolvimento Sustentável</div>
-          <h3 class="ods6-title">Água Potável e Saneamento para Todos</h3>
-          <p class="ods6-desc">As ações deste projeto estão alinhadas ao <strong>ODS 6 da ONU</strong>, que busca garantir disponibilidade e gestão sustentável da água e saneamento para todas as pessoas até 2030.</p>
-        </div>
-      </div>
-      <div class="ods6-metas">
-        <div class="ods6-meta"><span class="ods6-dot"></span><span>Acesso universal à água potável segura</span></div>
-        <div class="ods6-meta"><span class="ods6-dot"></span><span>Saneamento e higiene adequados para todos</span></div>
-        <div class="ods6-meta"><span class="ods6-dot"></span><span>Redução da poluição hídrica e melhoria da qualidade da água</span></div>
-        <div class="ods6-meta"><span class="ods6-dot"></span><span>Uso eficiente da água em todos os setores</span></div>
-        <div class="ods6-fonte">Fonte: <a href="https://www.un.org/sustainabledevelopment/water-and-sanitation/" target="_blank" rel="noopener">ONU — Objetivos de Desenvolvimento Sustentável (sdgs.un.org)</a></div>
-      </div>
-    </div>
     <div class="avisos-grid">
       <div class="av urg"><div class="av-top"><div class="av-ico">⚠️</div><div class="av-dt">Março 2025</div></div><h4>Alerta: consumo elevado nos bairros centrais</h4><p>O consumo médio está 18% acima do esperado neste mês. Reforçamos a importância de adotar hábitos de economia imediatamente.</p><span class="av-badge u">Urgente</span></div>
       <div class="av dest"><div class="av-top"><div class="av-ico">🌍</div><div class="av-dt">22 Março 2025</div></div><h4>Dia Mundial da Água — 22 de março</h4><p>Atividades comemorativas: distribuição de mudas, exposição fotográfica e palestra educativa no centro comunitário. Entrada gratuita.</p><span class="av-badge n">Evento</span></div>
       <div class="av"><div class="av-top"><div class="av-ico">📋</div><div class="av-dt">Durante março de 2025</div></div><h4>Distribuição de material educativo</h4><p>Voluntários estarão distribuindo panfletos e cartilhas nas feiras livres e escolas da região. Venha participar como voluntário!</p><span class="av-badge">Voluntariado</span></div>
       <div class="av dest"><div class="av-top"><div class="av-ico">🎓</div><div class="av-dt">Abril 2025</div></div><h4>Oficina: captação de água da chuva</h4><p>Aprenda na prática como montar um sistema simples de captação pluvial para sua residência. Gratuito, com material incluso.</p><span class="av-badge n">Novo</span></div>
       <div class="av"><div class="av-top"><div class="av-ico">💧</div><div class="av-dt">A confirmar</div></div><h4>Manutenção na rede hídrica</h4><p>Haverá interrupção no abastecimento em alguns setores para manutenção preventiva. Armazene água com antecedência.</p><span class="av-badge">Infraestrutura</span></div>
-
+      <div class="av"><div class="av-top"><div class="av-ico">📱</div><div class="av-dt">Contínuo</div></div><h4>Acompanhe nossas redes sociais</h4><p>Dicas diárias, resultados do diagnóstico e novidades do projeto. Compartilhe com sua família e vizinhos para ampliar o impacto!</p><span class="av-badge">Comunidade</span></div>
     </div>
   </div>
 </section>
@@ -628,12 +525,12 @@
   <div class="inner part-wrap">
     <div class="part-head">
       <div class="s-tag">Comunidade</div>
-      <h2 class="s-title">Sua ideia pode ajudar</h2>
-      <p class="s-desc" style="margin:0 auto;text-align:center">Compartilhe sugestões, relate problemas ou proponha ações para melhorar o uso consciente da água na sua comunidade.</p>
+      <h2 class="s-title">Responda nossa pesquisa</h2>
+      <p class="s-desc" style="margin:0 auto;text-align:center">Sua opinião é fundamental para o projeto. Leva menos de 2 minutos e nos ajuda a entender melhor o uso da água na nossa comunidade.</p>
     </div>
     <div class="form-box" style="text-align:center;padding:2.5rem">
       <p style="font-size:1rem;color:var(--texto-leve);line-height:1.8;margin-bottom:2rem">Clique no botão abaixo para acessar o formulário e enviar sua contribuição. É rápido e fácil! 💧</p>
-      <a href="#" class="btn-p" style="font-size:1rem;padding:1rem 3rem;display:inline-block">Acessar formulário de participação</a>
+      <a href="https://docs.google.com/forms/d/11Ax4xdkFgXDfAqbUg9OaedRDJrnDSs1y9T4X9PDtP-4/viewform" target="_blank" rel="noopener" class="btn-p" style="font-size:1rem;padding:1rem 3rem;display:inline-block">Acessar formulário de participação</a>
     </div>
   </div>
 </section>
@@ -642,37 +539,13 @@
 <footer>
   <div class="foot">
     <div class="foot-logo">Água Consciente 💧</div>
-    <div class="foot-txt">Universidade Candido Mendes<br>Projeto de Extensão Universitária<br>Água Potável e Saneamento — Diagnóstico do Desperdício em Regiões Urbanas<br>Promovendo sustentabilidade e consumo responsável em nossa comunidade.</div>
+    <div class="foot-txt">Projeto de Extensão Universitária<br>Água Potável e Saneamento — Diagnóstico do Desperdício em Regiões Urbanas<br>Promovendo sustentabilidade e consumo responsável em nossa comunidade.</div>
     <div class="foot-links">
       <a href="#sobre">Projeto</a>
       <a href="#diagnostico">Diagnóstico</a>
       <a href="#reuso">Reuso</a>
       <a href="#redes">Comunicação</a>
       <a href="#participacao">Participe</a>
-    </div>
-    <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(77,184,232,0.12);width:100%;max-width:900px">
-      <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:1.25rem;text-align:center">
-        <strong style="color:rgba(255,255,255,.75);display:block;margin-bottom:.5rem">Professor Orientador</strong>
-        Fabrício Bagli Siqueira
-      </div>
-      <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:1.25rem;text-align:center">
-        <strong style="color:rgba(255,255,255,.75);display:block;margin-bottom:.75rem">Membros do Grupo — 7º Período · Engenharia de Produção</strong>
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem">
-          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(77,184,232,.12);border-radius:8px;padding:.6rem 1rem;min-width:160px">Luciano Ribeiro da Silva<br><span style="color:var(--turquesa);font-size:.72rem">223150120</span></div>
-          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(77,184,232,.12);border-radius:8px;padding:.6rem 1rem;min-width:160px">Luciano Santiago Patrocinio<br><span style="color:var(--turquesa);font-size:.72rem">123150001</span></div>
-          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(77,184,232,.12);border-radius:8px;padding:.6rem 1rem;min-width:160px">Otto de Lima e Silva<br><span style="color:var(--turquesa);font-size:.72rem">224150071</span></div>
-          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(77,184,232,.12);border-radius:8px;padding:.6rem 1rem;min-width:160px">Talita Lord da Silva<br><span style="color:var(--turquesa);font-size:.72rem">123150016</span></div>
-          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(77,184,232,.12);border-radius:8px;padding:.6rem 1rem;min-width:160px">Viviane Garcez Tosta Nolasco<br><span style="color:var(--turquesa);font-size:.72rem">124150034</span></div>
-        </div>
-      </div>
-      <div style="font-size:.72rem;color:rgba(255,255,255,.4);text-align:center;line-height:1.9">
-        <strong style="color:rgba(255,255,255,.6);display:block;margin-bottom:.5rem">Fontes</strong>
-        <a href="https://brasil.un.org/pt-br/sdgs/6" target="_blank" rel="noopener" style="color:rgba(77,184,232,.7);text-decoration:none">ONU Brasil — ODS 6: Água Potável e Saneamento</a><br>
-        <a href="https://www.aguaesaneamento.org.br/noticias/agua-e-saneamento-desiguais-podem-ter-impacto-na-paz-e-estabilidade-social-diz-onu/" target="_blank" rel="noopener" style="color:rgba(77,184,232,.7);text-decoration:none">Instituto Trata Brasil — Água e Saneamento Desiguais</a><br>
-        <a href="https://www.un.org/sustainabledevelopment/water-and-sanitation/" target="_blank" rel="noopener" style="color:rgba(77,184,232,.7);text-decoration:none">ONU — Sustainable Development Goals: Water and Sanitation</a><br>
-        <a href="https://www.ana.gov.br" target="_blank" rel="noopener" style="color:rgba(77,184,232,.7);text-decoration:none">ANA — Agência Nacional de Águas e Saneamento Básico</a><br>
-        <a href="https://www.ibge.gov.br" target="_blank" rel="noopener" style="color:rgba(77,184,232,.7);text-decoration:none">IBGE — Instituto Brasileiro de Geografia e Estatística</a>
-      </div>
     </div>
   </div>
 </footer>
@@ -695,13 +568,25 @@ function calcular(){
   document.getElementById('res-s').textContent=s;
 }
 
-function showTab(id, btn){
-  document.querySelectorAll('.cons-panel').forEach(p=>p.classList.add('hidden'));
-  document.querySelectorAll('.cons-tab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.remove('hidden');
-  btn.classList.add('active');
+function copiar(id,btn){
+  const txt=document.getElementById(id).textContent;
+  navigator.clipboard.writeText(txt).then(()=>{
+    btn.textContent='✅ Copiado!';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='📋 Copiar legenda';btn.classList.remove('copied')},2500);
+  });
 }
 
+function enviar(){
+  const nome=document.getElementById('nome').value.trim();
+  const msg=document.getElementById('mensagem').value.trim();
+  if(!nome||!msg){alert('Por favor, preencha seu nome e sua mensagem.');return}
+  document.getElementById('success-msg').style.display='block';
+  document.getElementById('nome').value='';
+  document.getElementById('bairro').value='';
+  document.getElementById('mensagem').value='';
+  document.getElementById('tipo').value='';
+}
 </script>
 </body>
 </html>
